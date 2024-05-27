@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/gequ_yaogun_listview_geming"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="歌名"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/gequ_mingyao_listview_geshou"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="歌手"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/gequ_yaogun_listview_geming"
+        app:layout_constraintStart_toStartOf="@id/gequ_yaogun_listview_geming"/>
+
+    <Button
+        android:id="@+id/gequ_yaogun_listview_diange"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:text="点歌"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
