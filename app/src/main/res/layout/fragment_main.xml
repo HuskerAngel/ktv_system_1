@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.MainFragment"
-    android:background="@color/black">
+    android:background="@drawable/background">
 
     <!-- TODO: Update blank fragment layout -->
     <EditText
@@ -91,49 +91,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/yaokong"
-        android:layout_width="50dp"
-        android:layout_height="45dp"
-        android:background="@drawable/yaokong"
-        android:backgroundTint="@color/white"
-        android:text="."
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="遥控"
-        android:textSize="18sp"
-        android:paddingHorizontal="4dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/yaokong"
-        app:layout_constraintStart_toStartOf="@id/yaokong"/>
-
-    <Button
-        android:id="@+id/diange"
-        android:layout_width="50dp"
-        android:layout_height="45dp"
-        android:text="."
-        android:background="@drawable/diange"
-        android:backgroundTint="@color/white"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-    <TextView
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:text="点歌"
-        android:textSize="18sp"
-        android:paddingHorizontal="4dp"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/diange"
-        app:layout_constraintStart_toStartOf="@id/diange"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
