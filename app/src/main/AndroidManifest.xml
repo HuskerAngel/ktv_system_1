@@ -14,22 +14,22 @@
         tools:targetApi="31">
         <activity
             android:name=".GequMingyaoActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GequOumeiActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GequYaogunActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GequLiuxingActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GexingXinxiActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".FazhufuActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="redirecttofazhufu"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -37,7 +37,7 @@
         </activity>
         <activity
             android:name=".FadanmuActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="redirecttofadanmu"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -45,7 +45,7 @@
         </activity>
         <activity
             android:name=".DiangeActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="redirecttodiange"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -53,13 +53,17 @@
         </activity>
         <activity
             android:name=".YaokongActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="redirecttoyaokong"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
