@@ -17,6 +17,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="15dp"
         android:text="liuxing"
+        android:textColor="@color/white"
         android:paddingHorizontal="25dp"
         android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@id/gexing_mingdan_imageview"

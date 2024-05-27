@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GexingActivity extends AppCompatActivity {
+public class GequMingyaoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gexing);
+        setContentView(R.layout.activity_gequ_mingyao);
     }
 }
