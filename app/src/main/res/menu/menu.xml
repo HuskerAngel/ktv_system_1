@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="首页"
+        android:id="@+id/main_item"
+        android:icon="@drawable/mainicon_selector"
+        android:checked="true"
+        />
+    <item
+        android:title="遥控"
+        android:id="@+id/control_item"
+        android:icon="@drawable/controlicon_selector"
+        />
+    <item
+        android:title="点歌"
+        android:id="@+id/music_item"
+        android:icon="@drawable/musicicon_selector"
+        />
+</menu>

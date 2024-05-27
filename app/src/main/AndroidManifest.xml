@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Ktv_system"
         tools:targetApi="31">
         <activity
+            android:name=".TestActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".GequMingyaoActivity"
             android:exported="true" />
         <activity
@@ -31,41 +40,42 @@
             android:name=".FazhufuActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="redirecttofazhufu"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="redirecttofazhufu" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".FadanmuActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="redirecttofadanmu"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="redirecttofadanmu" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".DiangeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="redirecttodiange"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="redirecttodiange" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".YaokongActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="redirecttoyaokong"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="redirecttoyaokong" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 
