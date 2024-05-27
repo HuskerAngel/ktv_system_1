@@ -14,7 +14,14 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.example.ktv_system.GequfenleiProduct;
+import com.example.ktv_system.GexingProduct;
 import com.example.ktv_system.R;
+import com.example.ktv_system.adapter.GequfenleiAdapter;
+import com.example.ktv_system.adapter.GexingAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,11 +33,13 @@ public class MainFragment extends Fragment {
     private Button mbtfazhufu;
     private Button mbtgequfenlei;
     private Button mbtgexing;
-    private Button mbtyaokong;
-    private Button mbtdiange;
 
-    private GridView mlvgequ_mingdan;
-    private ListView mgvgexing_mingdan;
+    private GridView mgvgequ_mingdan;
+    private ListView mlvgexing_mingdan;
+
+    private List<GequfenleiProduct> gequfenleilist;
+
+    private List<GexingProduct> gexinglist;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,10 +95,9 @@ public class MainFragment extends Fragment {
         mbtfazhufu = view.findViewById(R.id.fazhufu);
         mbtgequfenlei = view.findViewById(R.id.gequfenlei);
         mbtgexing = view.findViewById(R.id.gexing);
-        mbtyaokong = view.findViewById(R.id.yaokong);
-        mbtdiange = view.findViewById(R.id.diange);
-        mlvgequ_mingdan = view.findViewById(R.id.gequ_mingdan);
-        mgvgexing_mingdan = view.findViewById(R.id.gexing_mingdan);
+
+        mgvgequ_mingdan = view.findViewById(R.id.gequ_mingdan);
+        mlvgexing_mingdan = view.findViewById(R.id.gexing_mingdan);
         Intent intentfadanmu = new Intent();
         Intent intentfazhufu = new Intent();
         Intent intentyaokong = new Intent();
@@ -102,6 +110,13 @@ public class MainFragment extends Fragment {
         intentyaokong.addCategory(Intent.CATEGORY_DEFAULT);
         intentdiange.setAction("redirecttodiange");
         intentdiange.addCategory(Intent.CATEGORY_DEFAULT);
+
+        initGequfenleiProduct();
+        initGexingProduct();
+        GequfenleiAdapter gequfenleiAdapter = new GequfenleiAdapter(this.gequfenleilist,getContext());
+        GexingAdapter gexingAdapter = new GexingAdapter(this.gexinglist,getContext());
+        mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
+        mlvgexing_mingdan.setAdapter(gexingAdapter);
         mbtfadanmu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,29 +129,36 @@ public class MainFragment extends Fragment {
                 startActivity(intentfazhufu);
             }
         });
-        mbtyaokong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intentyaokong);
-            }
-        });
-        mbtdiange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intentdiange);
-            }
-        });
+
         mbtgequfenlei.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mgvgequ_mingdan.setVisibility(View.VISIBLE);
+                mlvgexing_mingdan.setVisibility(View.GONE);
             }
         });
         mbtgexing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mgvgequ_mingdan.setVisibility(View.GONE);
+                mlvgexing_mingdan.setVisibility(View.VISIBLE);
             }
         });
+    }
+    private void initGequfenleiProduct(){
+        gequfenleilist = new ArrayList<>();
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample1,"民谣"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample2,"摇滚"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample3,"欧美"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample4,"流行"));
+
+    }
+    private void initGexingProduct(){
+        gexinglist = new ArrayList<>();
+        gexinglist.add(new GexingProduct(R.drawable.sample5,"民谣"));
+        gexinglist.add(new GexingProduct(R.drawable.sample6,"摇滚"));
+        gexinglist.add(new GexingProduct(R.drawable.sample7,"欧美"));
+        gexinglist.add(new GexingProduct(R.drawable.sample8,"流行"));
+
     }
 }

@@ -57,26 +57,14 @@
         <activity
             android:name=".DiangeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="redirecttodiange" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".YaokongActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="redirecttoyaokong" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
 
         </activity>
+
     </application>
 
 </manifest>
