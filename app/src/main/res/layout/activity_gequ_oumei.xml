@@ -12,6 +12,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fanhui"
+        android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -19,6 +20,7 @@
         android:id="@+id/oumei_backgruond"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="@drawable/oumei"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <ListView

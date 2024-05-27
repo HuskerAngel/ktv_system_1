@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".FadanmuActivity">
 
+    <Button
+        android:id="@+id/fadanmu_exit"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fanhui"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
