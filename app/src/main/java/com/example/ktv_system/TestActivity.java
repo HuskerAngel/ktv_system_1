@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ListView;
 
 import com.example.ktv_system.adapter.Fragmentadapter;
+import com.example.ktv_system.adapter.GequfenleiAdapter;
 import com.example.ktv_system.fragment.ControlFragment;
 import com.example.ktv_system.fragment.MainFragment;
 import com.example.ktv_system.fragment.MusicFragment;
@@ -25,12 +30,16 @@ public class TestActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         viewPager2 = findViewById(R.id.viewpager2bottom);
         bottomNavigationView = findViewById(R.id.bootomnav2);
+
+
         bottomNavigationView.setItemIconTintList(null);
         fragmentList.add(new MainFragment());
         fragmentList.add(new ControlFragment());
@@ -58,5 +67,7 @@ public class TestActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
+
 }
