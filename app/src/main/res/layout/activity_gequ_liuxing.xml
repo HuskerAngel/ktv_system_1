@@ -6,11 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".GequLiuxingActivity">
 
+
+
+    <ImageView
+        android:id="@+id/liuxing_backgruond"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/liuxing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <Button
-        android:id="@+id/minyao_exit"
+        android:id="@+id/liuxing_exit"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fanhui"
+        android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ListView
+        android:id="@+id/liuxing_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="530dp"
+        app:layout_constraintTop_toBottomOf="@id/liuxing_backgruond"
         app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

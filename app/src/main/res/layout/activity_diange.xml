@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".DiangeActivity">
 
+    <Button
+        android:id="@+id/diange_exit"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fanhui"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ListView
+        android:id="@+id/diange_listview"
+        android:layout_width="match_parent"
+        android:layout_height="685dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diange_exit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
