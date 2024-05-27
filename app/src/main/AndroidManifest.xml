@@ -28,26 +28,29 @@
             android:name=".GexingXinxiActivity"
             android:exported="false" />
         <activity
-            android:name=".GexingMingdanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GequMingdanActivity"
-            android:exported="false" />
-        <activity
             android:name=".FazhufuActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="redirecttofazhufu"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FadanmuActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="redirecttofadanmu"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".DiangeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GexingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GequActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="redirecttodiange"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".YaokongActivity"
             android:exported="false" />
