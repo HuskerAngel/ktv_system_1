@@ -117,6 +117,8 @@ public class MainFragment extends Fragment {
 //        initGexingProduct();
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(getContext());
         GequfenleiAdapter gequfenleiAdapter = new GequfenleiAdapter(this.gequfenleilist,getContext());
+        gexinglist = new ArrayList<>();
+        gexinglist = myDatabaseHelper.getAllGexingProduct();
         GexingAdapter gexingAdapter = new GexingAdapter(myDatabaseHelper.getAllGexingProduct(),getContext());
 //        GexingAdapter gexingAdapter = new GexingAdapter(this.gexinglist,getContext());
         mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
@@ -132,6 +134,20 @@ public class MainFragment extends Fragment {
                 intenttomusiclist.setAction("歌曲列表");
                 intenttomusiclist.addCategory(Intent.CATEGORY_DEFAULT);
                 startActivity(intenttomusiclist);
+            }
+        });
+
+        mlvgexing_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intenttogexingxinxi = new Intent();
+                Bundle gexingxinxibundle = new Bundle();
+                gexingxinxibundle.putString("歌手名",gexinglist.get(position).getTitle());
+                gexingxinxibundle.putString("歌手图片",gexinglist.get(position).getImg());
+                intenttogexingxinxi.putExtra("extra",gexingxinxibundle);
+                intenttogexingxinxi.setAction("歌星曲目列表");
+                intenttogexingxinxi.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivity(intenttogexingxinxi);
             }
         });
 
