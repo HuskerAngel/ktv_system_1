@@ -25,15 +25,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GequMingyaoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".GequOumeiActivity"
-            android:exported="true" />
-        <activity
-            android:name=".GequYaogunActivity"
-            android:exported="true" />
-        <activity
             android:name=".GequLiuxingActivity"
             android:exported="true">
             <intent-filter>

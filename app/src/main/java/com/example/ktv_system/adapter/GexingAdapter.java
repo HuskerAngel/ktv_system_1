@@ -68,6 +68,10 @@ public class GexingAdapter extends BaseAdapter {
             viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);
         }else{
             Log.e("AssetError", "failed to load image:"+list.get(position).getImg());
+            bitmap = getBitmapFromAssets("unknown.png");
+            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(viewHolder.imageView.getResources(),bitmap);
+            roundedBitmapDrawable.setCircular(true);
+            viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);
         }
 
         /*viewHolder.imageView.setImageResource(list.get(position).getImg());
