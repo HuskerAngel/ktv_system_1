@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -120,6 +121,21 @@ public class MainFragment extends Fragment {
 //        GexingAdapter gexingAdapter = new GexingAdapter(this.gexinglist,getContext());
         mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
         mlvgexing_mingdan.setAdapter(gexingAdapter);
+
+        mgvgequ_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intenttomusiclist = new Intent();
+                Bundle musiclistbundle = new Bundle();
+                musiclistbundle.putString("分类",gequfenleilist.get(position).getTitle());
+                intenttomusiclist.putExtra("extra",musiclistbundle);
+                intenttomusiclist.setAction("歌曲列表");
+                intenttomusiclist.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivity(intenttomusiclist);
+            }
+        });
+
+
         mbtfadanmu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
