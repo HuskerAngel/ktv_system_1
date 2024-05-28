@@ -60,7 +60,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public List<GequProduct> searchGequProduct (String search) {
         List<GequProduct> list = new ArrayList<>();
         String selectQuery = "SELECT * FROM music_info " +
-                "WHERE music_type like '%" + search+"%'" +" or music_name like '%" + search+"%'"+" or singer_name like '%" + search+"%'";
+                "WHERE music_type like '%" + search+"%'" +" or music_name like '%" + search+"%'"+" or singer_name like '%" + search+"%' COLLATE NOCASE";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery,null);
         if(cursor!=null){

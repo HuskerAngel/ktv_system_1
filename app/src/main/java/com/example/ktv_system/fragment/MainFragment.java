@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -35,13 +36,12 @@ public class MainFragment extends Fragment {
     private Button mbtfazhufu;
     private Button mbtgequfenlei;
     private Button mbtgexing;
-
     private GridView mgvgequ_mingdan;
     private ListView mlvgexing_mingdan;
-
     private List<GequfenleiProduct> gequfenleilist;
-
     private List<GexingProduct> gexinglist;
+    private Button mbtsousuo;
+    private EditText met;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -97,7 +97,8 @@ public class MainFragment extends Fragment {
         mbtfazhufu = view.findViewById(R.id.fazhufu);
         mbtgequfenlei = view.findViewById(R.id.gequfenlei);
         mbtgexing = view.findViewById(R.id.gexing);
-
+        mbtsousuo = view.findViewById(R.id.sousuo_btn);
+        met = view.findViewById(R.id.sousuo);
         mgvgequ_mingdan = view.findViewById(R.id.gequ_mingdan);
         mlvgexing_mingdan = view.findViewById(R.id.gexing_mingdan);
         Intent intentfadanmu = new Intent();
@@ -152,6 +153,18 @@ public class MainFragment extends Fragment {
         });
 
 
+        mbtsousuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intenttosousuo = new Intent();
+                Bundle sousuobundle = new Bundle();
+                sousuobundle.putString("搜索内容",met.getText().toString());
+                intenttosousuo.putExtra("extra",sousuobundle);
+                intenttosousuo.setAction("搜索");
+                intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivity(intenttosousuo);
+            }
+        });
         mbtfadanmu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
