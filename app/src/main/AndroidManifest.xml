@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Ktv_system"
         tools:targetApi="31">
         <activity
+            android:name=".SousuoActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity"
             android:exported="true">
             <intent-filter>
@@ -34,8 +37,9 @@
             android:name=".GequLiuxingActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="歌曲列表"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="歌曲列表" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -61,15 +65,10 @@
         </activity>
         <activity
             android:name=".DiangeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".YaokongActivity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
     </application>
 
 </manifest>
