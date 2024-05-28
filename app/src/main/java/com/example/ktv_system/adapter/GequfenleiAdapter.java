@@ -13,7 +13,7 @@ import android.widget.TextView;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
-import com.example.ktv_system.GequfenleiProduct;
+import com.example.ktv_system.dao.GequfenleiProduct;
 import com.example.ktv_system.R;
 
 import java.util.List;

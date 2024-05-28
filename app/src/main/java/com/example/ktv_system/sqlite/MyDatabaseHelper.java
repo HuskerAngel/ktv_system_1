@@ -1,10 +1,19 @@
 package com.example.ktv_system.sqlite;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.NonNull;
+
+import com.example.ktv_system.R;
+import com.example.ktv_system.dao.GequfenleiProduct;
+import com.example.ktv_system.dao.GexingProduct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
@@ -30,5 +39,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public List<GexingProduct> getAllGexingProduct () {
+        List<GexingProduct> list = new ArrayList<>();
+        String selectQuery = "SELECT * FROM singer";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,null);
+        if(cursor!=null){
+            while(cursor.moveToNext()){
+                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("singer_name"));
+                @SuppressLint("Range") String img = cursor.getString(cursor.getColumnIndex("singer_picture"));
+                list.add(new GexingProduct(img,title));
+            }
+        }
+        return list;
     }
 }

@@ -1,8 +1,10 @@
 package com.example.ktv_system.adapter;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +15,11 @@ import android.widget.TextView;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
-import com.example.ktv_system.GequfenleiProduct;
-import com.example.ktv_system.GexingProduct;
+import com.example.ktv_system.dao.GexingProduct;
 import com.example.ktv_system.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class GexingAdapter extends BaseAdapter {
@@ -58,12 +61,21 @@ public class GexingAdapter extends BaseAdapter {
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.imageView.setImageResource(list.get(position).getImg());
+        Bitmap bitmap = getBitmapFromAssets(list.get(position).getImg());
+        if (bitmap!=null){
+            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(viewHolder.imageView.getResources(),bitmap);
+            roundedBitmapDrawable.setCircular(true);
+            viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);
+        }else{
+            Log.e("AssetError", "failed to load image:"+list.get(position).getImg());
+        }
+
+        /*viewHolder.imageView.setImageResource(list.get(position).getImg());
 
         Bitmap bitmap = BitmapFactory.decodeResource(viewHolder.imageView.getResources(),list.get(position).getImg());
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(viewHolder.imageView.getResources(),bitmap);
         roundedBitmapDrawable.setCircular(true);
-        viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);
+        viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);*/
 
         viewHolder.title.setText(list.get(position).getTitle());
         return convertView;
@@ -71,5 +83,25 @@ public class GexingAdapter extends BaseAdapter {
     class ViewHolder{
         ImageView imageView;
         TextView title;
+    }
+
+    public Bitmap getBitmapFromAssets(String fileName){
+        AssetManager assetManager = context.getAssets();
+        InputStream inputStream = null;
+        try{
+            inputStream = assetManager.open(fileName);
+            return BitmapFactory.decodeStream(inputStream);
+        }catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if(inputStream!=null){
+                try{
+                    inputStream.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
