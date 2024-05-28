@@ -7,14 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ktv_system.dao.GequfenleiProduct;
 import com.example.ktv_system.dao.GexingProduct;
@@ -153,6 +156,21 @@ public class MainFragment extends Fragment {
         });
 
 
+        met.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId== EditorInfo.IME_ACTION_SEARCH){
+                    Intent intenttosousuo = new Intent();
+                    Bundle sousuobundle = new Bundle();
+                    sousuobundle.putString("搜索内容",met.getText().toString());
+                    intenttosousuo.putExtra("extra",sousuobundle);
+                    intenttosousuo.setAction("搜索");
+                    intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
+                    startActivity(intenttosousuo);
+                }
+                return false;
+            }
+        });
         mbtsousuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
