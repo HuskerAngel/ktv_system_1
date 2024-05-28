@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".FadanmuActivity">
 
     <Button
@@ -11,7 +12,119 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:background="@drawable/fanhui"
+        android:backgroundTint="@color/white"
+        android:text="1"
+        android:textSize="0sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <VideoView
+        android:id="@+id/shiping"
+        android:layout_width="332dp"
+        android:layout_height="180dp"
+
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="请输入弹幕内容"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/fandanmu_et"
+        app:layout_constraintBottom_toTopOf="@id/fandanmu_et"/>
+
+
+    <EditText
+        android:id="@+id/fandanmu_et"
+        android:layout_width="335dp"
+        android:layout_height="181dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="296dp"
+        android:gravity="top"
+        android:hint="请输入内容"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/fandanmu_et"
+        app:layout_constraintTop_toBottomOf="@id/fandanmu_et"
+        android:orientation="horizontal"
+     >
+        <TextView
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:text="文案类型:"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+             />
+        <ToggleButton
+            android:id="@+id/fadanmu_btn1"
+            android:layout_width="44dp"
+            android:layout_height="40dp"
+            android:checked="false"
+            android:textOn="赞"
+            android:textOff="赞"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/fandanmu_btn"/>
+        <ToggleButton
+            android:id="@+id/fandanmu_btn2"
+            android:layout_width="44dp"
+            android:layout_height="40dp"
+            android:checked="false"
+            android:textOn="踩"
+            android:textOff="踩"
+            android:textSize="16sp"
+            android:layout_marginLeft="13dp"
+            android:textColor="@color/white"
+            android:background="@drawable/fandanmu_btn"/>
+        <ToggleButton
+            android:id="@+id/btn3"
+            android:layout_width="66dp"
+            android:layout_height="40dp"
+            android:checked="false"
+            android:textOn="彩虹屁"
+            android:textOff="彩虹屁"
+            android:layout_marginLeft="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:background="@drawable/fandanmu_btn"/>
+
+        <ToggleButton
+            android:id="@+id/fandanmu_btn4"
+            android:layout_width="80dp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="11dp"
+            android:background="@drawable/fandanmu_btn"
+            android:checked="false"
+            android:textOn="生日聚会"
+            android:textOff="生日聚会"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="36dp"
+        android:text="马上发射"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:backgroundTint="#BCFF0000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
