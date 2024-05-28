@@ -23,7 +23,8 @@
 
     <Button
         android:id="@+id/sousuo_btn"
-        android:layout_width="50dp"
+        android:layout_width="55dp"
+        android:text="搜索"
         android:layout_height="40dp"
         app:layout_constraintStart_toEndOf="@id/sousuo"
         app:layout_constraintTop_toTopOf="@id/sousuo"/>
