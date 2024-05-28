@@ -32,7 +32,12 @@
             android:exported="true" />
         <activity
             android:name=".GequLiuxingActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="歌曲列表"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".GexingXinxiActivity"
             android:exported="true" />

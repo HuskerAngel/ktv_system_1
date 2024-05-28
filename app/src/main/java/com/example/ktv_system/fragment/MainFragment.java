@@ -10,15 +10,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 
-import com.example.ktv_system.GequfenleiProduct;
-import com.example.ktv_system.GexingProduct;
+import com.example.ktv_system.dao.GequfenleiProduct;
+import com.example.ktv_system.dao.GexingProduct;
 import com.example.ktv_system.R;
 import com.example.ktv_system.adapter.GequfenleiAdapter;
 import com.example.ktv_system.adapter.GexingAdapter;
+import com.example.ktv_system.sqlite.MyDatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,11 +114,28 @@ public class MainFragment extends Fragment {
         intentdiange.addCategory(Intent.CATEGORY_DEFAULT);
 
         initGequfenleiProduct();
-        initGexingProduct();
+//        initGexingProduct();
+        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(getContext());
         GequfenleiAdapter gequfenleiAdapter = new GequfenleiAdapter(this.gequfenleilist,getContext());
-        GexingAdapter gexingAdapter = new GexingAdapter(this.gexinglist,getContext());
+        GexingAdapter gexingAdapter = new GexingAdapter(myDatabaseHelper.getAllGexingProduct(),getContext());
+//        GexingAdapter gexingAdapter = new GexingAdapter(this.gexinglist,getContext());
         mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
         mlvgexing_mingdan.setAdapter(gexingAdapter);
+
+        mgvgequ_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intenttomusiclist = new Intent();
+                Bundle musiclistbundle = new Bundle();
+                musiclistbundle.putString("分类",gequfenleilist.get(position).getTitle());
+                intenttomusiclist.putExtra("extra",musiclistbundle);
+                intenttomusiclist.setAction("歌曲列表");
+                intenttomusiclist.addCategory(Intent.CATEGORY_DEFAULT);
+                startActivity(intenttomusiclist);
+            }
+        });
+
+
         mbtfadanmu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,10 +174,10 @@ public class MainFragment extends Fragment {
     }
     private void initGexingProduct(){
         gexinglist = new ArrayList<>();
-        gexinglist.add(new GexingProduct(R.drawable.sample5,"民谣"));
-        gexinglist.add(new GexingProduct(R.drawable.sample6,"摇滚"));
-        gexinglist.add(new GexingProduct(R.drawable.sample7,"欧美"));
-        gexinglist.add(new GexingProduct(R.drawable.sample8,"流行"));
+        gexinglist.add(new GexingProduct("sample6.png","民谣"));
+        gexinglist.add(new GexingProduct("sample5.png","摇滚"));
+        gexinglist.add(new GexingProduct("sample7.png","欧美"));
+        gexinglist.add(new GexingProduct("sample8.png","流行"));
 
     }
 }
