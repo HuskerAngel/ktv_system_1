@@ -133,8 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="2"
-            android:paddingVertical="10dp"
-            android:listSelector="@color/white"
+            android:listSelector="#5E5858"
             />
         <ListView
             android:id="@+id/gexing_mingdan"

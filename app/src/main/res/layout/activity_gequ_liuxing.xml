@@ -12,7 +12,8 @@
         android:id="@+id/liuxing_backgruond"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/liuxing"
+        android:src="@drawable/liuxing"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
@@ -23,15 +24,6 @@
         android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-    <TextView
-        android:id="@+id/zanshi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="占位"
-        app:layout_constraintTop_toBottomOf="@id/liuxing_backgruond"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="35sp"/>
 
     <ListView
         android:id="@+id/liuxing_listview"
