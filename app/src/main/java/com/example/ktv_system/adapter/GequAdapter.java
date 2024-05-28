@@ -3,16 +3,20 @@ package com.example.ktv_system.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import com.example.ktv_system.App;
 import com.example.ktv_system.R;
 import com.example.ktv_system.dao.GequProduct;
 import com.example.ktv_system.dao.GequfenleiProduct;
@@ -47,12 +51,14 @@ public class GequAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
+        Mylistener mylistener = null;
         if(convertView == null){
-
+            mylistener = new Mylistener(position);
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_gequ_liuxing_listview,null);
             viewHolder = new ViewHolder();
             viewHolder.music_name= convertView.findViewById(R.id.gequ_liuxing_listview_geming);
             viewHolder.singer= convertView.findViewById(R.id.gequ_liuxing_listview_geshou);
+            viewHolder.diange= convertView.findViewById(R.id.gequ_liuxing_listview_diange);
 
             convertView.setTag(viewHolder);
         }else{
@@ -61,10 +67,43 @@ public class GequAdapter extends BaseAdapter {
         viewHolder.music_name.setText(list.get(position).getMusic_name());
 
         viewHolder.singer.setText(list.get(position).getSinger());
+
+        viewHolder.diange.setOnClickListener(mylistener);
+        /*viewHolder.diange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App app = (App) context.getApplicationContext();
+                List<GequProduct> templist = app.getDiangelist();
+                Log.i("添加前", list.toString());
+                templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
+                Log.i("添加后", list.toString());
+                app.setDiangelist(list);
+            }
+        });*/
         return convertView;
+    }
+
+    private class Mylistener implements View.OnClickListener{
+        int position;
+
+        public Mylistener(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, list.get(position).getMusic_name(), Toast.LENGTH_LONG).show();
+            App app = (App) context.getApplicationContext();
+            List<GequProduct> templist = app.getDiangelist();
+            Log.i("添加前", list.toString());
+            templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
+            Log.i("添加后", list.toString());
+            app.setDiangelist(templist);
+        }
     }
     class ViewHolder{
         TextView music_name;
         TextView singer;
+        Button diange;
     }
 }

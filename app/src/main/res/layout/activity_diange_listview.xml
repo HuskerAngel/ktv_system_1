@@ -11,6 +11,7 @@
       android:text="歌名"
       android:gravity="center"
       android:textSize="15sp"
+      android:textColor="@color/white"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       />
@@ -21,6 +22,7 @@
         android:text="歌手"
         android:gravity="center"
         android:textSize="15sp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@id/diange_listview_geming"
         app:layout_constraintTop_toTopOf="parent"/>
     <Button
