@@ -30,6 +30,8 @@
         android:background="@drawable/diange_listview_cancel_background"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintStart_toEndOf="@id/diange_listview_geshou"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -39,6 +41,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="25dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         app:layout_constraintStart_toEndOf="@id/diange_listview_cancle"
         app:layout_constraintTop_toTopOf="parent"/>
 
