@@ -91,7 +91,7 @@
             android:textColor="@color/white"
             android:background="@drawable/fandanmu_btn"/>
         <ToggleButton
-            android:id="@+id/btn3"
+            android:id="@+id/fandanmu_btn3"
             android:layout_width="66dp"
             android:layout_height="40dp"
             android:checked="false"

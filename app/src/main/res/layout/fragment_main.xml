@@ -10,50 +10,63 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <EditText
-        android:id="@+id/sousuo"
-        android:layout_width="350dp"
-        android:layout_height="40dp"
-        android:hint="搜歌曲、歌星"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp"
-        android:imeOptions="actionSearch"
-        android:singleLine="true"
+    <LinearLayout
+        android:id="@+id/sousuo_linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/sousuo"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/sousuo"
+            android:layout_width="275dp"
+            android:layout_height="50dp"
+            android:hint="搜歌曲、歌星"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"/>
 
-    <Button
-        android:id="@+id/sousuo_btn"
-        android:layout_width="55dp"
-        android:text="搜索"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toEndOf="@id/sousuo"
-        app:layout_constraintTop_toTopOf="@id/sousuo"/>
+        <Button
+            android:id="@+id/sousuo_btn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+
+            android:layout_marginLeft="15dp"
+            android:height="35dp"
+            android:background="@drawable/main_sousuo_basic"
+            android:text="搜索"
+            android:textSize="0sp" />
+
+    </LinearLayout>
+
+
+
 
     <Button
         android:id="@+id/fadanmu"
         android:layout_width="115dp"
         android:layout_height="65dp"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_fadanmu_backgruond"
         android:text="."
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sousuo" />
+        app:layout_constraintTop_toBottomOf="@id/sousuo_linear" />
 
     <TextView
         android:id="@+id/tv1"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+
         android:gravity="center"
         android:text="发弹幕"
         android:textColor="#fff"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-
+        app:layout_constraintStart_toStartOf="@id/fadanmu"
         app:layout_constraintTop_toBottomOf="@+id/fadanmu"
         tools:ignore="MissingConstraints" />
 
@@ -62,12 +75,12 @@
         android:layout_width="145dp"
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="34dp"
         android:background="@mipmap/fazhufu"
         android:text="1"
         android:textSize="0sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sousuo" />
+        app:layout_constraintTop_toBottomOf="@id/sousuo_linear" />
 
 
     <TextView
@@ -86,11 +99,11 @@
         android:id="@+id/gequfenlei"
         android:layout_width="126dp"
         android:layout_height="72dp"
-        android:layout_marginStart="48dp"
+
         android:background="@mipmap/felei"
         android:text="歌曲分类"
         android:textSize="0sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/fadanmu"
         app:layout_constraintTop_toBottomOf="@id/tv1" />
 
     <TextView
@@ -110,7 +123,7 @@
         android:id="@+id/gexing"
         android:layout_width="130dp"
         android:layout_height="68dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="34dp"
         android:background="@mipmap/gexing"
         android:backgroundTint="#512DA8"
         android:text="1"
