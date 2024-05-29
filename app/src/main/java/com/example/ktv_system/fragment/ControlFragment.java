@@ -2,11 +2,15 @@ package com.example.ktv_system.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ToggleButton;
 
 import com.example.ktv_system.R;
 
@@ -25,6 +29,9 @@ public class ControlFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button ht_add,ht_reduce,btn1,btn2,btn3,btn4,yx_add,yx_reduce;
+    private ToggleButton tbtn1 ,tbtn2,tbtn3,tbnt4;
 
     public ControlFragment() {
         // Required empty public constructor
@@ -54,6 +61,7 @@ public class ControlFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -62,5 +70,18 @@ public class ControlFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_control, container, false);
+    }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        ht_add=view.findViewById(R.id.huantong_add);
+        ht_reduce=view.findViewById(R.id.huantong_reduce);
+        btn1=view.findViewById(R.id.btn1);
+        btn2=view.findViewById(R.id.btn2);
+        btn3=view.findViewById(R.id.btn3);
+        btn4=view.findViewById(R.id.btn4);
+        tbtn1=view.findViewById(R.id.yingxiaoqiehuan);
+        tbtn2=view.findViewById(R.id.pingfen);
+        tbtn3=view.findViewById(R.id.hujiao);
+        tbnt4=view.findViewById(R.id.dengguang);
     }
 }

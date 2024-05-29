@@ -75,7 +75,7 @@
             android:gravity="center"
             android:textColor="@color/white"/>
         <Button
-            android:id="@+id/control_huantong_reduce"
+            android:id="@+id/huantong_reduce"
             android:layout_width="70dp"
             android:layout_marginTop="5dp"
             android:layout_height="70dp"
@@ -97,10 +97,14 @@
         android:clipChildren="false"
         android:clipToPadding="false">
         <TableRow>
-            <Button android:layout_width="70dp"
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/control_btn1"/>
-            <Button android:layout_width="70dp"
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/control_btn2"/>
@@ -121,10 +125,14 @@
                 android:textColor="@color/white"/>
         </TableRow>
         <TableRow>
-            <Button android:layout_width="70dp"
+            <Button
+                android:id="@+id/bnt3"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/control_btn3"/>
-            <Button android:layout_width="70dp"
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/control_btn4"/>
