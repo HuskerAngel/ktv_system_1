@@ -47,8 +47,8 @@
 
     <LinearLayout
         android:id="@+id/linelayout1"
-        android:layout_width="80dp"
-        android:layout_height="260dp"
+        android:layout_width="70dp"
+        android:layout_height="240dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/control_huatong_background"
@@ -60,8 +60,8 @@
             android:id="@+id/huantong_add"
             android:background="@drawable/control_add"
 
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:text="."
 
             android:textSize="0sp"
@@ -76,9 +76,9 @@
             android:textColor="@color/white"/>
         <Button
             android:id="@+id/control_huantong_reduce"
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:layout_marginTop="5dp"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:text="."
             android:textSize="0sp"
             android:background="@drawable/control_reduce"
@@ -148,8 +148,8 @@
     </TableLayout>
     <LinearLayout
         android:id="@+id/linelayout2"
-        android:layout_width="80dp"
-        android:layout_height="260dp"
+        android:layout_width="70dp"
+        android:layout_height="240dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/control_huatong_background"
         app:layout_constraintTop_toTopOf="@id/linelayout1"
@@ -161,8 +161,8 @@
 
             android:text="."
             android:textSize="0sp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"/>
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -173,11 +173,11 @@
             android:textColor="@color/white"/>
         <Button
             android:id="@+id/yinxiang_reduce"
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:layout_marginTop="5dp"
             android:text="."
             android:textSize="0sp"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:background="@drawable/control_reduce"
          />
     </LinearLayout>
