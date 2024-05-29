@@ -45,6 +45,7 @@ public class MainFragment extends Fragment {
     private List<GexingProduct> gexinglist;
     private Button mbtsousuo;
     private EditText met;
+    private GequfenleiAdapter gequfenleiAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,7 +121,7 @@ public class MainFragment extends Fragment {
         initGequfenleiProduct();
 //        initGexingProduct();
         MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(getContext());
-        GequfenleiAdapter gequfenleiAdapter = new GequfenleiAdapter(this.gequfenleilist,getContext());
+        gequfenleiAdapter = new GequfenleiAdapter(this.gequfenleilist,getContext());
         gexinglist = new ArrayList<>();
         gexinglist = myDatabaseHelper.getAllGexingProduct();
         GexingAdapter gexingAdapter = new GexingAdapter(myDatabaseHelper.getAllGexingProduct(),getContext());
@@ -225,6 +226,15 @@ public class MainFragment extends Fragment {
         gexinglist.add(new GexingProduct("sample5.png","摇滚"));
         gexinglist.add(new GexingProduct("sample7.png","欧美"));
         gexinglist.add(new GexingProduct("sample8.png","流行"));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        gequfenleiAdapter.notifyDataSetChanged();
+
 
     }
 }

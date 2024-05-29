@@ -19,7 +19,9 @@
         android:name=".App">
         <activity
             android:name=".SousuoActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="搜索结果"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="搜索" />
 
@@ -28,7 +30,8 @@
         </activity>
         <activity
             android:name=".TestActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="KTV点歌系统">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +40,9 @@
         </activity>
         <activity
             android:name=".GequLiuxingActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="歌曲列表"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="歌曲列表" />
 
@@ -46,7 +51,9 @@
         </activity>
         <activity
             android:name=".GexingXinxiActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="歌手详情"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="歌星曲目列表" />
 
@@ -54,8 +61,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:label="发祝福"
             android:name=".FazhufuActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="redirecttofazhufu" />
 
@@ -64,16 +73,15 @@
         </activity>
         <activity
             android:name=".FadanmuActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="发弹幕"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="redirecttofadanmu" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DiangeActivity"
-            android:exported="true"></activity>
         <activity
             android:name=".YaokongActivity"
             android:exported="true"></activity>

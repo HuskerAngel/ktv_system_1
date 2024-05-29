@@ -8,22 +8,14 @@
     tools:context=".fragment.MusicFragment">
 
 
-    <Button
-        android:id="@+id/diange_exit"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fanhui"
-        android:backgroundTint="@color/white"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
     <ListView
         android:id="@+id/diange_listview"
         android:layout_width="match_parent"
-        android:layout_height="530dp"
+        android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diange_exit" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
