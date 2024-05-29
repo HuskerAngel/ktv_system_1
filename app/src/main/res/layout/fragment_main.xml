@@ -10,14 +10,18 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
+    <TextView
         android:id="@+id/sousuo_linear"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/sousuo"
-        android:orientation="horizontal">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fadanmu"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sousuo"/>
+
         <EditText
             android:id="@+id/sousuo"
             android:layout_width="275dp"
@@ -25,22 +29,25 @@
             android:hint="搜歌曲、歌星"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
+            android:background="@null"
             android:imeOptions="actionSearch"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:layout_marginStart="30dp"
+            app:layout_constraintStart_toStartOf="@id/sousuo_linear"
+            app:layout_constraintTop_toTopOf="@id/sousuo_linear"/>
 
         <Button
             android:id="@+id/sousuo_btn"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-
-            android:layout_marginLeft="15dp"
-            android:height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/main_sousuo_basic"
             android:text="搜索"
-            android:textSize="0sp" />
-
-    </LinearLayout>
+            android:textSize="0sp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintEnd_toEndOf="@id/sousuo_linear"
+            app:layout_constraintTop_toTopOf="@id/sousuo_linear"
+            app:layout_constraintBottom_toBottomOf="@id/sousuo_linear"/>
 
 
 
