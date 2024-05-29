@@ -213,10 +213,10 @@ public class MainFragment extends Fragment {
     }
     private void initGequfenleiProduct(){
         gequfenleilist = new ArrayList<>();
-        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample1,"民谣"));
-        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample2,"摇滚"));
-        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample3,"欧美"));
-        gequfenleilist.add(new GequfenleiProduct(R.drawable.sample4,"流行"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.folk,"民谣"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.rock,"摇滚"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.west,"欧美"));
+        gequfenleilist.add(new GequfenleiProduct(R.drawable.pop,"流行"));
 
     }
     private void initGexingProduct(){

@@ -49,16 +49,18 @@ public class GequAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         Mylistener mylistener = null;
         if(convertView == null){
             mylistener = new Mylistener(position);
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_gequ_liuxing_listview,null);
             viewHolder = new ViewHolder();
+
             viewHolder.music_name= convertView.findViewById(R.id.gequ_liuxing_listview_geming);
             viewHolder.singer= convertView.findViewById(R.id.gequ_liuxing_listview_geshou);
             viewHolder.diange= convertView.findViewById(R.id.gequ_liuxing_listview_diange);
+            convertView.setTag(viewHolder);
 
             convertView.setTag(viewHolder);
         }else{
@@ -68,18 +70,20 @@ public class GequAdapter extends BaseAdapter {
 
         viewHolder.singer.setText(list.get(position).getSinger());
 
-        viewHolder.diange.setOnClickListener(mylistener);
-        /*viewHolder.diange.setOnClickListener(new View.OnClickListener() {
+        viewHolder.diange.setOnClickListener(null);
+//        viewHolder.diange.setOnClickListener(mylistener);
+        viewHolder.diange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, list.get(position).getMusic_name(), Toast.LENGTH_SHORT).show();
                 App app = (App) context.getApplicationContext();
                 List<GequProduct> templist = app.getDiangelist();
                 Log.i("添加前", list.toString());
                 templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
                 Log.i("添加后", list.toString());
-                app.setDiangelist(list);
+                app.setDiangelist(templist);
             }
-        });*/
+        });
         return convertView;
     }
 

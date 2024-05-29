@@ -40,7 +40,7 @@ public class DiangeAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if(convertView == null){
 
@@ -48,8 +48,10 @@ public class DiangeAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.music_name= convertView.findViewById(R.id.diange_listview_geming);
             viewHolder.singer= convertView.findViewById(R.id.diange_listview_geshou);
-
+            viewHolder.cancel = convertView.findViewById(R.id.diange_listview_cancle);
+            viewHolder.up = convertView.findViewById(R.id.diange_listview_up);
             convertView.setTag(viewHolder);
+
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -57,10 +59,37 @@ public class DiangeAdapter extends BaseAdapter {
 
         viewHolder.singer.setText(list.get(position).getSinger());
 
+        viewHolder.cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App app = (App)context.getApplicationContext();
+                List<GequProduct> templist = app.getDiangelist();
+                templist.remove(position);
+                app.setDiangelist(templist);
+                notifyDataSetChanged();
+            }
+        });
+
+        viewHolder.up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                App app = (App)context.getApplicationContext();
+                List<GequProduct> templist = app.getDiangelist();
+                GequProduct gequProduct = templist.remove(position);
+                templist.add(0,gequProduct);
+                app.setDiangelist(templist);
+                notifyDataSetChanged();
+            }
+        });
+
         return convertView;
     }
     class ViewHolder{
         TextView music_name;
         TextView singer;
+
+        Button cancel;
+
+        Button up;
     }
 }
