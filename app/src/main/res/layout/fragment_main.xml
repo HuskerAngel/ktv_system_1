@@ -16,7 +16,7 @@
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv1"
+        app:layout_constraintTop_toBottomOf="@+id/fadanmu"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/sousuo"/>
@@ -32,7 +32,7 @@
             android:background="@null"
             android:imeOptions="actionSearch"
             android:singleLine="true"
-            app:layout_constraintStart_toStartOf="@id/sousuo_linear"
+            app:layout_constraintEnd_toEndOf="@id/sousuo_linear"
             app:layout_constraintTop_toTopOf="@id/sousuo_linear"
             android:layout_marginStart="20dp"/>
 
@@ -43,79 +43,53 @@
             android:background="@drawable/main_sousuo_basic"
             android:text="搜索"
             android:textSize="0sp"
-            android:layout_marginEnd="30dp"
-            app:layout_constraintEnd_toEndOf="@id/sousuo_linear"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toStartOf="@id/sousuo"
             app:layout_constraintTop_toTopOf="@id/sousuo_linear"
-            app:layout_constraintBottom_toBottomOf="@id/sousuo_linear"/>
+            app:layout_constraintBottom_toBottomOf="@id/sousuo_linear" />
 
 
     <Button
         android:id="@+id/fadanmu"
         android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_fadanmu_backgruond"
         android:text="."
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginVertical="20dp"/>
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="发弹幕"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/fadanmu"
-        app:layout_constraintTop_toBottomOf="@+id/fadanmu"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/fazhufu"
         android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:background="@mipmap/fazhufu"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/fazhufu"
         android:text="1"
         android:textSize="0sp"
         app:layout_constraintStart_toEndOf="@+id/fadanmu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="发祝福"
-        android:textSize="20sp"
-        android:textColor="#fff"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/fazhufu"
-        app:layout_constraintStart_toStartOf="@+id/fazhufu"
-
-        tools:ignore="MissingConstraints" />
     <Button
         android:id="@+id/gequfenlei"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
         android:background="@mipmap/felei"
         android:text="歌曲分类"
         android:textSize="0sp"
         app:layout_constraintStart_toStartOf="@id/fadanmu"
         app:layout_constraintTop_toBottomOf="@id/sousuo_linear"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/tv3"
-        android:layout_width="120dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:text="歌曲分类"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="#fff"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/gequfenlei"
@@ -125,25 +99,26 @@
 
     <Button
         android:id="@+id/gexing"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="34dp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
         android:background="@mipmap/gexing"
         android:backgroundTint="#512DA8"
         android:text="1"
         android:textSize="0sp"
-        app:layout_constraintStart_toStartOf="@+id/fazhufu"
+        app:layout_constraintStart_toEndOf="@id/gequfenlei"
         app:layout_constraintTop_toBottomOf="@id/sousuo_linear"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"/>
 
     <TextView
-        android:layout_width="120dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
         android:gravity="center"
         android:text="歌星分类"
         android:textColor="#fff"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/gexing"
         app:layout_constraintTop_toBottomOf="@+id/gexing"
         tools:ignore="MissingConstraints" />
