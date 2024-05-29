@@ -17,6 +17,12 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <master.flame.danmaku.ui.widget.DanmakuView
+        android:id="@+id/fazhufu_danmaku"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/topic"

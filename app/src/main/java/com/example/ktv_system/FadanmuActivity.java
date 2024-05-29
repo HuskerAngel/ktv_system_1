@@ -3,9 +3,14 @@ package com.example.ktv_system;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +19,27 @@ import android.widget.EditText;
 import android.widget.MediaController;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
+
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Random;
+
+import master.flame.danmaku.controller.DrawHandler;
+import master.flame.danmaku.controller.IDanmakuView;
+import master.flame.danmaku.danmaku.loader.ILoader;
+import master.flame.danmaku.danmaku.loader.IllegalDataException;
+import master.flame.danmaku.danmaku.loader.android.DanmakuLoaderFactory;
+import master.flame.danmaku.danmaku.model.BaseDanmaku;
+import master.flame.danmaku.danmaku.model.DanmakuTimer;
+import master.flame.danmaku.danmaku.model.IDanmakus;
+import master.flame.danmaku.danmaku.model.IDisplayer;
+import master.flame.danmaku.danmaku.model.android.DanmakuContext;
+import master.flame.danmaku.danmaku.model.android.Danmakus;
+import master.flame.danmaku.danmaku.model.android.SpannedCacheStuffer;
+import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
+import master.flame.danmaku.danmaku.parser.IDataSource;
+import master.flame.danmaku.danmaku.parser.android.BiliDanmukuParser;
+import master.flame.danmaku.ui.widget.DanmakuView;
 
 public class FadanmuActivity extends AppCompatActivity {
 
@@ -25,7 +51,16 @@ public class FadanmuActivity extends AppCompatActivity {
     private ToggleButton btn3;
     private ToggleButton btn4;
     private Button btn;
+    private DanmakuView danmaku;
+    private boolean showDanmaku;
+    private DanmakuContext danmakuContext;
 
+    private BaseDanmakuParser parser = new BaseDanmakuParser() {
+        @Override
+        protected IDanmakus parse() {
+            return new Danmakus();
+        }
+    };
 
 
 
@@ -42,10 +77,9 @@ public class FadanmuActivity extends AppCompatActivity {
         btn3=findViewById(R.id.fandanmu_btn3);
         btn4=findViewById(R.id.fandanmu_btn4);
         btn=findViewById(R.id.fadanmu_fason);
-
-        MediaController mediaController=new MediaController(this);
-        videoView.setMediaController(mediaController);
-
+        danmaku=findViewById(R.id.fadanmu_danmaku);
+        initDanmaku();
+        generateDanmakus();
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,8 +133,86 @@ public class FadanmuActivity extends AppCompatActivity {
                 builder.setView(view);
                 builder.create().show();
 
+                String content = editText.getText().toString();
+                if (!TextUtils.isEmpty(content)) {
+                    addDanmaku(content, true);     // 添加一条弹幕
+                    editText.setText("");
+                }
             }
         });
+
+
+
+
     }
 
+
+    private void initDanmaku(){
+        danmaku.setCallback(new DrawHandler.Callback() {
+            @Override
+            public void prepared() {
+                showDanmaku = true;
+                danmaku.start();    // 开始弹幕
+                generateDanmakus(); // 随机生成弹幕的方法
+            }
+            @Override
+            public void updateTimer(DanmakuTimer timer) {
+            }
+            @Override
+            public void danmakuShown(BaseDanmaku danmaku) {
+            }
+            @Override
+            public void drawingFinished() {
+            }
+        });
+
+
+        // 创建 DanmakuContext 上下文对象
+        danmakuContext = DanmakuContext.create();
+        // 开始缓存
+        danmaku.enableDanmakuDrawingCache(true);
+        // 弹幕view准备  --- 传入解析器
+        danmaku.prepare(parser,danmakuContext);
+
+    }
+    // 添加弹幕
+    private void addDanmaku(String content, boolean border) {
+        // 创建弹幕对象，设置从右向左滚动
+        BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
+        baseDanmaku.text = content;     // 设置内容
+        baseDanmaku.padding = 6;        // 设置边距
+        baseDanmaku.textSize = 25;      // 设置弹幕字体大小
+        baseDanmaku.textColor = Color.WHITE;
+        baseDanmaku.time=danmaku.getCurrentTime();// 设置弹幕字体颜色
+        // 设置当前时间
+        if (border){
+            baseDanmaku.borderColor = Color.BLUE;       // 设置边框颜色
+        }
+        // 添加弹幕至弹幕视图组件中
+        danmaku.addDanmaku(baseDanmaku);
+    }
+
+    // 随机生成弹幕
+    private void generateDanmakus() {
+        // 启用线程随机生成弹幕
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (showDanmaku) {
+                    int num = new Random().nextInt(300);
+                    String content = ""+num;
+                    addDanmaku(content,false);
+                    try {
+                        Thread.sleep(num);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+
 }
+
+
