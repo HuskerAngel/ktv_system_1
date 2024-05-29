@@ -73,14 +73,11 @@ public class GexingAdapter extends BaseAdapter {
             roundedBitmapDrawable.setCircular(true);
             viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);
         }
-
         /*viewHolder.imageView.setImageResource(list.get(position).getImg());
-
         Bitmap bitmap = BitmapFactory.decodeResource(viewHolder.imageView.getResources(),list.get(position).getImg());
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(viewHolder.imageView.getResources(),bitmap);
         roundedBitmapDrawable.setCircular(true);
         viewHolder.imageView.setImageDrawable(roundedBitmapDrawable);*/
-
         viewHolder.title.setText(list.get(position).getTitle());
         return convertView;
     }

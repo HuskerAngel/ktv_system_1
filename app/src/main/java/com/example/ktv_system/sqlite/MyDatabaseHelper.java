@@ -56,7 +56,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         return list;
     }
-
     public List<GequProduct> searchGequProduct (String search) {
         List<GequProduct> list = new ArrayList<>();
         String selectQuery = "SELECT * FROM music_info " +
