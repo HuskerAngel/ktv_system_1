@@ -92,4 +92,10 @@ public class MusicFragment extends Fragment {
         diangeAdapter.notifyDataSetChanged();
         mlv.setAdapter(diangeAdapter);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        diangeAdapter.notifyDataSetChanged();
+    }
 }
