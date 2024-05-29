@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.ktv_system.App;
 import com.example.ktv_system.R;
@@ -36,6 +37,7 @@ public class MusicFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private TextView mtv;
 
     public MusicFragment() {
         // Required empty public constructor
@@ -79,23 +81,41 @@ public class MusicFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mlv = view.findViewById(R.id.diange_listview);
+        mtv = view.findViewById(R.id.tip);
         App app = (App)getContext().getApplicationContext();
         list = new ArrayList<>();
         list = app.getDiangelist();
-        diangeAdapter = new DiangeAdapter(list,getContext());
-        mlv.setAdapter(diangeAdapter);
+        diangeAdapter = new DiangeAdapter(list, getContext());
+        if(diangeAdapter.isEmpty()==false) {
+
+            mlv.setAdapter(diangeAdapter);
+        }else{
+            mtv.setText("未点任何歌曲");
+        }
+
     }
 
     @Override
     public void onStart() {
         super.onStart();
         diangeAdapter.notifyDataSetChanged();
-        mlv.setAdapter(diangeAdapter);
+        if(diangeAdapter.isEmpty()==false) {
+
+            mlv.setAdapter(diangeAdapter);
+        }else{
+            mtv.setText("未点任何歌曲");
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         diangeAdapter.notifyDataSetChanged();
+        if(diangeAdapter.isEmpty()==false) {
+
+            mlv.setAdapter(diangeAdapter);
+        }else{
+            mtv.setText("未点任何歌曲");
+        }
     }
 }

@@ -33,9 +33,7 @@ android {
 
 dependencies {
 
-    implementation("com.github.ctiao:DanmakuFlameMaster:0.9.25")
-    implementation("com.github.ctiao:ndkbitmap-armv7a:0.9.21")
-    implementation("com.github.ctiao:ndkbitmap-x86:0.9.21")
+
     implementation("com.github.ctiao:dfm:0.4.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
