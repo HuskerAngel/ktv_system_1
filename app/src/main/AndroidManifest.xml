@@ -15,7 +15,8 @@
         android:name=".App">
         <activity
             android:name=".SousuoActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="搜索" />
 
@@ -33,7 +34,8 @@
         </activity>
         <activity
             android:name=".GequLiuxingActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="歌曲列表" />
 
@@ -42,7 +44,8 @@
         </activity>
         <activity
             android:name=".GexingXinxiActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".TestActivity">
             <intent-filter>
                 <action android:name="歌星曲目列表" />
 
