@@ -81,6 +81,14 @@ public class FadanmuActivity extends AppCompatActivity {
         initDanmaku();
 
 
+        videoView.setVideoPath("android.resource://"+getPackageName()+"/"+R.raw.shipin1);
+        videoView.start();
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);//让视频循环播放
+            }
+        });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
