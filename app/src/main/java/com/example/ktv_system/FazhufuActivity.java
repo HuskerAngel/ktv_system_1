@@ -95,7 +95,7 @@ public class FazhufuActivity extends AppCompatActivity {
         btn3 = findViewById(R.id.btn3);
         btn4 = findViewById(R.id.btn4);
         btn = findViewById(R.id.fazhufu_fason);
-        mDanmakuView = findViewById(R.id.fazhufu_danmaku);
+        danmaku = findViewById(R.id.fazhufu_danmaku);
 ;
         danmakuContext = DanmakuContext.create();
 
