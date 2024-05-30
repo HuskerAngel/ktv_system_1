@@ -59,7 +59,7 @@ public class TestActivity extends AppCompatActivity {
         Fragmentadapter fragmentadapter =
                 new Fragmentadapter(this,fragmentList);
         viewPager2.setAdapter(fragmentadapter);
-        //重点 设置 bottomNavigationView 的item 的点击事件 设置viewPager2的联动
+        viewPager2.setUserInputEnabled(false);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
             @Override
@@ -113,7 +113,6 @@ public class TestActivity extends AppCompatActivity {
         }else {
             Log.e("数据库是否存在", "cloneData: 存在数据库");
             Log.e("存在目录", "cloneData: "+(new File(DB_PATH + DB_NAME)).getAbsolutePath());
-//            /data/data/com.siyusoulmate.mm/databases/mm.db
         }
 
     }

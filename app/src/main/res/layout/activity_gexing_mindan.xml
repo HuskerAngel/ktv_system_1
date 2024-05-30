@@ -27,5 +27,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/gexing_mingdan_textview"
+        app:layout_constraintTop_toTopOf="@id/gexing_mingdan_textview"
+        app:layout_constraintBottom_toBottomOf="@id/gexing_mingdan_textview"
+        android:text=">"
+        android:textSize="30sp"
+        android:textColor="@color/white"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

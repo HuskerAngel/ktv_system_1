@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Ktv_system" parent="Theme.MaterialComponents.DayNight.Bridge">
+    <style name="Base.Theme.Ktv_system" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!--<item name="colorPrimary">#000</item>
+        <item name="android:actionMenuTextColor">#fff</item>-->
+        <item name="colorPrimary">#171614</item>
     </style>
 
-    <style name="Theme.Ktv_system" parent="Base.Theme.Ktv_system" />
+    <style name="Theme.Ktv_system" parent="Base.Theme.Ktv_system" >
+
+    </style>
 </resources>

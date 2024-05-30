@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/sousuo_linear"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,39 +76,44 @@
 
     <RadioGroup
         android:id="@+id/radiogroup"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
+        android:layout_width="330dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@id/sousuo_linear"
-        app:layout_constraintTop_toBottomOf="@id/sousuo_linear">
+        app:layout_constraintTop_toBottomOf="@id/sousuo_linear"
+        android:gravity="center"
+        android:paddingHorizontal="15dp">
         <RadioButton
             android:id="@+id/radiobutton1"
             android:layout_width="0dp"
-            android:layout_height="85dp"
+            android:layout_height="70dp"
+
             android:layout_weight="1"
             android:drawableTop="@drawable/music_selector"
+            android:paddingTop="5dp"
             android:text="歌曲分类"
             android:button="@null"
             android:gravity="center_horizontal"
-            android:textColor="@color/radiogroupmusiccolor" />
+            android:textColor="@color/radiogroupmusiccolor"
+            android:background="@drawable/radiobuttonshape"
+            android:layout_marginEnd="65dp"
+            />
         <RadioButton
             android:id="@+id/radiobutton2"
             android:layout_width="0dp"
-            android:layout_height="85dp"
+            android:layout_height="70dp"
+            android:paddingTop="5dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:drawableTop="@drawable/singer_selector"
             android:text="歌星列表"
             android:textColor="@color/radiogroupsingercolor"
-            android:button="@null"/>
-
+            android:button="@null"
+            android:background="@drawable/radiobuttonshape"
+            android:layout_margin="10dp"
+            />
     </RadioGroup>
-
-
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +127,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="2"
-            android:listSelector="#5E5858"
             android:scrollbars="none"
             />
         <ListView
