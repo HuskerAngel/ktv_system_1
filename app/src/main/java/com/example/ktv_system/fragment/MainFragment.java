@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +15,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.ktv_system.dao.GequfenleiProduct;
@@ -37,8 +41,6 @@ import java.util.List;
 public class MainFragment extends Fragment {
     private Button mbtfadanmu;
     private Button mbtfazhufu;
-    private Button mbtgequfenlei;
-    private Button mbtgexing;
     private GridView mgvgequ_mingdan;
     private ListView mlvgexing_mingdan;
     private List<GequfenleiProduct> gequfenleilist;
@@ -46,6 +48,8 @@ public class MainFragment extends Fragment {
     private Button mbtsousuo;
     private EditText met;
     private GequfenleiAdapter gequfenleiAdapter;
+    private RadioGroup mrg;
+    private RadioButton mrb1,mrb2;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,12 +103,14 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mbtfadanmu = view.findViewById(R.id.fadanmu);
         mbtfazhufu = view.findViewById(R.id.fazhufu);
-        mbtgequfenlei = view.findViewById(R.id.gequfenlei);
-        mbtgexing = view.findViewById(R.id.gexing);
         mbtsousuo = view.findViewById(R.id.sousuo_btn);
         met = view.findViewById(R.id.sousuo);
         mgvgequ_mingdan = view.findViewById(R.id.gequ_mingdan);
         mlvgexing_mingdan = view.findViewById(R.id.gexing_mingdan);
+        mrg = view.findViewById(R.id.radiogroup);
+        mrb1 = view.findViewById(R.id.radiobutton1);
+        mrb2 = view.findViewById(R.id.radiobutton2);
+        mrb1.setChecked(true);
         Intent intentfadanmu = new Intent();
         Intent intentfazhufu = new Intent();
         Intent intentyaokong = new Intent();
@@ -129,6 +135,40 @@ public class MainFragment extends Fragment {
         mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
         mlvgexing_mingdan.setAdapter(gexingAdapter);
 
+        mrb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    mgvgequ_mingdan.setVisibility(View.VISIBLE);
+                    mlvgexing_mingdan.setVisibility(View.GONE);
+                }
+            }
+        });
+        mrb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    mgvgequ_mingdan.setVisibility(View.GONE);
+                    mlvgexing_mingdan.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        mrg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = mrg.findViewById(checkedId);
+                String string = radioButton.getText().toString();
+                switch (string){
+                    case "歌星列表":
+                        mgvgequ_mingdan.setVisibility(View.GONE);
+                        mlvgexing_mingdan.setVisibility(View.VISIBLE);
+                        break;
+                    case "歌曲分类":
+                        mgvgequ_mingdan.setVisibility(View.VISIBLE);
+                        mlvgexing_mingdan.setVisibility(View.GONE);
+                }
+            }
+        });
         mgvgequ_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -197,20 +237,6 @@ public class MainFragment extends Fragment {
             }
         });
 
-        mbtgequfenlei.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mgvgequ_mingdan.setVisibility(View.VISIBLE);
-                mlvgexing_mingdan.setVisibility(View.GONE);
-            }
-        });
-        mbtgexing.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mgvgequ_mingdan.setVisibility(View.GONE);
-                mlvgexing_mingdan.setVisibility(View.VISIBLE);
-            }
-        });
     }
     private void initGequfenleiProduct(){
         gequfenleilist = new ArrayList<>();
