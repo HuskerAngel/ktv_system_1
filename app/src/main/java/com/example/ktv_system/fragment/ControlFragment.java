@@ -1,19 +1,35 @@
 package com.example.ktv_system.fragment;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.Manifest;
+import android.app.Service;
+import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -21,9 +37,13 @@ import android.widget.ToggleButton;
 import com.example.ktv_system.App;
 import com.example.ktv_system.FadanmuActivity;
 import com.example.ktv_system.R;
+import com.example.ktv_system.TestActivity;
 import com.example.ktv_system.dao.GequProduct;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,14 +61,31 @@ public class ControlFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private Button ht_add,ht_reduce,btn1,btn2,btn3,btn4,yx_add,yx_reduce;
+    private Button ht_add,ht_reduce,btn1,btn2,btn3,yx_add,yx_reduce;
+    private CheckBox btn4;
     private ProgressBar mprogressBar;
     private AlertDialog alertDialog1,alertDialog2;
     private View mview;
-    private static  int htvolume = 10;
-    private static  int yxvolume = 10;
+    private static  int htvolume = 20;
+    private static  int yxvolume = 20;
     private static boolean yuanchangbanchang = true;
     private TextView mtvmusicing;
+    private SeekBar seekBar;
+    private TextView musicLength,musicCur;
+    private Timer timer;
+    private boolean isSeekBarChanging;//互斥变量，防止进度条与定时器冲突。
+    private int currentPosition;//当前音乐播放的进度
+    SimpleDateFormat format;
+
+    private AudioManager audioManager;
+
+    private boolean checked;
+
+    private MediaPlayer mediaPlayer;
+    App app;
+    private LinearLayout linearLayout;
+
+
 
 
 
@@ -100,37 +137,34 @@ public class ControlFragment extends Fragment {
         yx_reduce=view.findViewById(R.id.yinxiang_reduce);
         btn1=view.findViewById(R.id.btn1);
         btn2=view.findViewById(R.id.btn2);
-        btn3=view.findViewById(R.id.btn3);
+        btn3=view.findViewById(R.id.bnt3);
         btn4=view.findViewById(R.id.btn4);
         mtvmusicing = view.findViewById(R.id.control_text);
+        musicLength = view.findViewById(R.id.music_length);
+        musicCur = view.findViewById(R.id.music_cur);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(yuanchangbanchang){
-                    yuanchangbanchang=false;
-                    Toast.makeText(getContext(), "已切换为伴唱模式", Toast.LENGTH_SHORT).show();
-                }else{
-                    yuanchangbanchang=true;
-                    Toast.makeText(getContext(), "已切换为原唱模式", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        linearLayout = view.findViewById(R.id.time);
+        seekBar = view.findViewById(R.id.seekbar);
+        seekBar.setOnSeekBarChangeListener(new MySeekBar());
+        App app = (App) getContext().getApplicationContext();
+        mediaPlayer = app.getMediaPlayer();
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                App app = (App)getContext().getApplicationContext();
-                List<GequProduct> templist = app.getDiangelist();
-                templist.remove(0);
-                app.setDiangelist(templist);
-                if(templist.size()!=0){
-                    mtvmusicing.setText(templist.get(0).getMusic_name());
-                }else{
-                    mtvmusicing.setText("暂无播放歌曲");
-                }
-            }
-        });
+        audioManager = (AudioManager) getContext().getSystemService(Service.AUDIO_SERVICE);
+        format = new SimpleDateFormat("mm:ss");
+        /*if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        }else {*/
+        initMediaPlayer();//初始化mediaplayer
+//        }
+        /*App app =  (App)getContext().getApplicationContext();
+        if(app.getDiangelist().size()!=0)
+        {
+
+        }else{
+            Toast.makeText(getContext(), "未点歌", Toast.LENGTH_SHORT).show();
+        }*/
         ht_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,15 +282,246 @@ public class ControlFragment extends Fragment {
         });
     }
 
+    private void initMediaPlayer() {
+        try {
+            AssetFileDescriptor afd = getResources().openRawResourceFd(R.raw.loml);
+            mediaPlayer.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());//指定音频文件的路径
+            mediaPlayer.prepare();//让mediaplayer进入准备状态
+
+//            mediaPlayer.setLooping(true);
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    List<GequProduct> templist = app.getDiangelist();
+                    if(templist.size()>0) {
+                        templist.remove(0);
+                        app.setDiangelist(templist);
+                        if (templist.size() != 0) {
+                            mtvmusicing.setText(templist.get(0).getMusic_name());
+                            mediaPlayer.seekTo(0);
+                            mediaPlayer.start();
+                        } else {
+                            mtvmusicing.setText("暂无播放歌曲");
+                            seekBar.setVisibility(View.INVISIBLE);
+                            linearLayout.setVisibility(View.INVISIBLE);
+                            btn4.setChecked(false);
+                            currentPosition = 0;
+                            btn1.setOnClickListener(null);
+                            btn2.setOnClickListener(null);
+                            btn3.setOnClickListener(null);
+                            btn4.setOnCheckedChangeListener(null);
+                        }
+                    }
+
+                }
+            });
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                public void onPrepared(MediaPlayer mp) {
+                    seekBar.setMax(mediaPlayer.getDuration());
+                    musicLength.setText(format.format(mediaPlayer.getDuration())+"");
+                    musicCur.setText("00:00");
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();
-        App app = (App)getContext().getApplicationContext();
+        app = (App)getContext().getApplicationContext();
         List<GequProduct> templist = app.getDiangelist();
+
         if(templist.size()!=0){
+            if(mediaPlayer.isPlaying()){
+                btn4.setChecked(true);
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+
+                    Runnable updateUI = new Runnable() {
+                        @Override
+                        public void run() {
+                            musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
+                        }
+                    };
+
+                    @Override
+                    public void run() {
+                        if (!isSeekBarChanging) {
+                            seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                            getActivity().runOnUiThread(updateUI);
+                        }
+                    }
+                }, 0, 50);
+            }
             mtvmusicing.setText(templist.get(0).getMusic_name());
+            initMediaPlayer();
+            seekBar.setVisibility(View.VISIBLE);
+            linearLayout.setVisibility(View.VISIBLE);
+
+
+            btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        if (!mediaPlayer.isPlaying()) {
+                            mediaPlayer.start();//开始播放
+                            mediaPlayer.seekTo(currentPosition);
+
+                            //监听播放时回调函数
+                            timer = new Timer();
+                            timer.schedule(new TimerTask() {
+
+                                Runnable updateUI = new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
+                                    }
+                                };
+
+                                @Override
+                                public void run() {
+                                    if (!isSeekBarChanging) {
+                                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                                        getActivity().runOnUiThread(updateUI);
+                                    }
+                                }
+                            }, 0, 50);
+                        }
+                    } else {
+                        if (mediaPlayer.isPlaying()) {
+                            currentPosition = mediaPlayer.getCurrentPosition();
+                            mediaPlayer.pause();//暂停播放
+                        }
+                    }
+                }
+            });
+
+            btn3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    currentPosition = 0;
+
+                    mediaPlayer.seekTo(currentPosition);
+
+                    //监听播放时回调函数
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+
+                        Runnable updateUI = new Runnable() {
+                            @Override
+                            public void run() {
+                                musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
+                            }
+                        };
+
+                        @Override
+                        public void run() {
+                            if (!isSeekBarChanging) {
+                                seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                                getActivity().runOnUiThread(updateUI);
+                            }
+                        }
+                    }, 0, 50);
+                }
+
+            });
+
+
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (yuanchangbanchang) {
+                        yuanchangbanchang = false;
+                        Toast.makeText(getContext(), "已切换为伴唱模式", Toast.LENGTH_SHORT).show();
+                    } else {
+                        yuanchangbanchang = true;
+                        Toast.makeText(getContext(), "已切换为原唱模式", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            btn2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    App app = (App) getContext().getApplicationContext();
+                    List<GequProduct> templist = app.getDiangelist();
+                    if(templist.size()>0) {
+                        templist.remove(0);
+                        app.setDiangelist(templist);
+                        if (templist.size() != 0) {
+                            mtvmusicing.setText(templist.get(0).getMusic_name());
+                            mediaPlayer.seekTo(0);
+                            mediaPlayer.start();
+                            btn4.setChecked(true);
+                        } else {
+                            mtvmusicing.setText("暂无播放歌曲");
+                            seekBar.setVisibility(View.INVISIBLE);
+                            linearLayout.setVisibility(View.INVISIBLE);
+                            btn4.setChecked(false);
+                            currentPosition = 0;
+                            btn1.setOnClickListener(null);
+                            btn2.setOnClickListener(null);
+                            btn3.setOnClickListener(null);
+                            btn4.setOnCheckedChangeListener(null);
+                        }
+                    }
+                }
+            });
         }else{
             mtvmusicing.setText("暂无播放歌曲");
+            seekBar.setVisibility(View.INVISIBLE);
+            linearLayout.setVisibility(View.INVISIBLE);
+            btn4.setOnCheckedChangeListener(null);
+            btn3.setOnClickListener(null);
+            btn1.setOnClickListener(null);
+            btn2.setOnClickListener(null);
+            Toast.makeText(getContext(), "未点歌", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isSeekBarChanging = true;
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        if (timer != null){
+            timer.cancel();
+            timer = null;
+        }
+    }
+
+    public class MySeekBar implements SeekBar.OnSeekBarChangeListener {
+
+        public void onProgressChanged(SeekBar seekBar, int progress,
+                                      boolean fromUser) {
+            if(progress==mediaPlayer.getDuration()){
+                List<GequProduct> templist = app.getDiangelist();
+                if(templist.size()>0) {
+                    templist.remove(0);
+                    app.setDiangelist(templist);
+                    if (templist.size() != 0) {
+                        mtvmusicing.setText(templist.get(0).getMusic_name());
+                    } else {
+                        mtvmusicing.setText("暂无播放歌曲");
+                    }
+                }
+            }
+        }
+
+        /*滚动时,应当暂停后台定时器*/
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            isSeekBarChanging = true;
+        }
+        /*滑动结束后，重新设置值*/
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            isSeekBarChanging = false;
+            mediaPlayer.seekTo(seekBar.getProgress());
+            currentPosition = seekBar.getProgress();
         }
     }
 }

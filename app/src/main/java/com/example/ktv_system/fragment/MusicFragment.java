@@ -89,6 +89,7 @@ public class MusicFragment extends Fragment {
         if(diangeAdapter.isEmpty()==false) {
 
             mlv.setAdapter(diangeAdapter);
+            mtv.setVisibility(View.GONE);
         }else{
             mtv.setText("未点任何歌曲");
         }
@@ -102,6 +103,7 @@ public class MusicFragment extends Fragment {
         if(diangeAdapter.isEmpty()==false) {
 
             mlv.setAdapter(diangeAdapter);
+            mtv.setVisibility(View.GONE);
         }else{
             mtv.setText("未点任何歌曲");
         }
@@ -114,6 +116,7 @@ public class MusicFragment extends Fragment {
         if(diangeAdapter.isEmpty()==false) {
 
             mlv.setAdapter(diangeAdapter);
+            mtv.setVisibility(View.GONE);
         }else{
             mtv.setText("未点任何歌曲");
         }

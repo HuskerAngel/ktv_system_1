@@ -3,6 +3,7 @@ package com.example.ktv_system.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +79,11 @@ public class GequAdapter extends BaseAdapter {
                 Toast.makeText(context, list.get(position).getMusic_name(), Toast.LENGTH_SHORT).show();
                 App app = (App) context.getApplicationContext();
                 List<GequProduct> templist = app.getDiangelist();
+                MediaPlayer mediaPlayer = app.getMediaPlayer();
+                if(templist.size()==0){
+                    mediaPlayer.seekTo(0);
+                    mediaPlayer.start();
+                }
                 Log.i("添加前", list.toString());
                 templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
                 Log.i("添加后", list.toString());

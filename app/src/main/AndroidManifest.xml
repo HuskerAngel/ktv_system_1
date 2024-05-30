@@ -31,7 +31,8 @@
         <activity
             android:name=".TestActivity"
             android:exported="true"
-            android:label="KTV点歌系统">
+            android:label="KTV点歌系统"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

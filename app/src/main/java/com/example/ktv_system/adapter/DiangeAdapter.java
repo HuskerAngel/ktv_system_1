@@ -1,6 +1,8 @@
 package com.example.ktv_system.adapter;
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,9 +66,15 @@ public class DiangeAdapter extends BaseAdapter {
             public void onClick(View v) {
                 App app = (App)context.getApplicationContext();
                 List<GequProduct> templist = app.getDiangelist();
+                MediaPlayer mediaPlayer = app.getMediaPlayer();
+                if(position==0){
+                    mediaPlayer.seekTo(0);
+                    mediaPlayer.start();
+                }
                 templist.remove(position);
                 app.setDiangelist(templist);
                 notifyDataSetChanged();
+
             }
         });
 
@@ -75,10 +83,14 @@ public class DiangeAdapter extends BaseAdapter {
             public void onClick(View v) {
                 App app = (App)context.getApplicationContext();
                 List<GequProduct> templist = app.getDiangelist();
+                MediaPlayer mediaPlayer = app.getMediaPlayer();
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
                 GequProduct gequProduct = templist.remove(position);
                 templist.add(0,gequProduct);
                 app.setDiangelist(templist);
                 notifyDataSetChanged();
+
             }
         });
 

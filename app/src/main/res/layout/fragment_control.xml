@@ -33,6 +33,38 @@
         android:textSize="17sp"
         app:layout_constraintStart_toEndOf="@id/text1"
         app:layout_constraintTop_toTopOf="@id/text1"/>
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:id="@+id/time"
+        app:layout_constraintEnd_toEndOf="@id/seekbar"
+        app:layout_constraintTop_toBottomOf="@id/seekbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/music_cur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"/>
+
+        <TextView
+            android:id="@+id/music_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 
 
@@ -41,7 +73,7 @@
         android:layout_width="70dp"
         android:layout_height="240dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/control_huatong_background"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,12 +153,13 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:background="@drawable/control_btn3"/>
-            <Button
+            <CheckBox
                 android:id="@+id/btn4"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="20dp"
-                android:background="@drawable/control_btn4"/>
+                android:drawableStart="@drawable/play_selector"
+                android:button="null"/>
         </TableRow>
         <TableRow>
             <TextView android:layout_width="70dp"
