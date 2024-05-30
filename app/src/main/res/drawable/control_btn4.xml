@@ -10,7 +10,7 @@
     <item android:drawable="@drawable/control_btn4_basic"
         android:top="15dp"
         android:left="15dp"
-        android:right="10dp"
+        android:right="15dp"
         android:bottom="15dp"/>
 
 </layer-list>
