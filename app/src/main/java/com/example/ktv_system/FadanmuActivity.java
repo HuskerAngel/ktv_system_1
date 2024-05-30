@@ -79,7 +79,7 @@ public class FadanmuActivity extends AppCompatActivity {
         btn=findViewById(R.id.fadanmu_fason);
         danmaku=findViewById(R.id.fadanmu_danmaku);
         initDanmaku();
-        generateDanmakus();
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,8 +152,7 @@ public class FadanmuActivity extends AppCompatActivity {
             @Override
             public void prepared() {
                 showDanmaku = true;
-                danmaku.start();    // 开始弹幕
-                generateDanmakus(); // 随机生成弹幕的方法
+                danmaku.start();    // 开始弹幕// 随机生成弹幕的方法
             }
             @Override
             public void updateTimer(DanmakuTimer timer) {
@@ -192,25 +191,6 @@ public class FadanmuActivity extends AppCompatActivity {
         danmaku.addDanmaku(baseDanmaku);
     }
 
-    // 随机生成弹幕
-    private void generateDanmakus() {
-        // 启用线程随机生成弹幕
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (showDanmaku) {
-                    int num = new Random().nextInt(300);
-                    String content = ""+num;
-                    addDanmaku(content,false);
-                    try {
-                        Thread.sleep(num);
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-    }
 
 
 }
