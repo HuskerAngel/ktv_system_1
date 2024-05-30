@@ -34,16 +34,7 @@
         app:layout_constraintStart_toEndOf="@id/text1"
         app:layout_constraintTop_toTopOf="@id/text1"/>
 
-    <Button
-        android:id="@+id/control_yidian"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="5dp"
-        android:text="已点列表"
-        android:textColor="@color/white"
-        android:background="@drawable/control_btn"
-        app:layout_constraintTop_toTopOf="@id/text1"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <LinearLayout
         android:id="@+id/linelayout1"
@@ -250,17 +241,6 @@
         app:layout_constraintStart_toStartOf="@id/pingfen"
         />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="25dp"
-        android:text="关闭"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/control_btn_exit"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

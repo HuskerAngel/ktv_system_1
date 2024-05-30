@@ -144,7 +144,7 @@ public class ControlFragment extends Fragment {
                     mprogressBar.setProgress(htvolume);
                 }
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
                 builder.setView(mview);
                 alertDialog1 = builder.create();
                 alertDialog1.show();
@@ -172,7 +172,7 @@ public class ControlFragment extends Fragment {
                 }else if(htvolume<=0){
                     mprogressBar.setProgress(htvolume);
                 }
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
                 builder.setView(mview);
                 alertDialog1 = builder.create();
                 alertDialog1.show();
@@ -201,7 +201,7 @@ public class ControlFragment extends Fragment {
                     mprogressBar.setProgress(yxvolume);
                 }
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
                 builder.setView(mview);
                 alertDialog2 = builder.create();
                 alertDialog2.show();
@@ -231,7 +231,7 @@ public class ControlFragment extends Fragment {
                     mprogressBar.setProgress(yxvolume);
                 }
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
                 builder.setView(mview);
                 alertDialog2 = builder.create();
                 alertDialog2.show();
