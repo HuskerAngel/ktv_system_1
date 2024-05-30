@@ -3,16 +3,30 @@ package com.example.ktv_system;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.DrawableMarginSpan;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 import master.flame.danmaku.controller.DrawHandler;
@@ -36,8 +50,12 @@ public class FazhufuActivity extends AppCompatActivity {
     private DanmakuView danmaku;
     private boolean showDanmaku;
     private DanmakuContext danmakuContext;
+    private Context context;
 
+    private TextView textView;
+    private ImageView imageView;
     private Button btn;
+
 
     private BaseDanmakuParser parser = new BaseDanmakuParser() {
         @Override
@@ -45,6 +63,29 @@ public class FazhufuActivity extends AppCompatActivity {
             return new Danmakus();
         }
     };
+    /**
+     * 创建图文混排模式
+     * @param drawable
+     * @return
+     */
+    private SpannableStringBuilder createSpannable(Drawable drawable) {
+        //25dp转化为px
+        float dp = 25;
+        final float scale = getResources().getDisplayMetrics().density;
+        //由25dp转化来的px
+        int px = (int) (dp * scale + 0.5f);
+
+
+
+        SpannableStringBuilder spannableString = new SpannableStringBuilder();
+        spannableString.append("小明回复小红：你在干嘛呀。");
+        //添加图片
+        drawable.setBounds(0, 0, px, px);
+        ImageSpan imageSpan1 = new ImageSpan(drawable);
+        spannableString.setSpan(imageSpan1, spannableString.length() - 1, spannableString.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        return spannableString;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +100,20 @@ public class FazhufuActivity extends AppCompatActivity {
         btn=findViewById(R.id.fazhufu_fason);
         danmaku=findViewById(R.id.fazhufu_danmaku);
 
-        initDanmaku();
-        generateDanmakus();
+//        initDanmaku();
+
+
+        SpannableStringBuilder spannableString = new SpannableStringBuilder();
+        spannableString.append("暗影IV已经开始暴走了");
+        ImageSpan imageSpan = new ImageSpan(this, R.mipmap.ic_launcher);
+        //也可以这样
+        //Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+        //drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        //ImageSpan imageSpan1 = new ImageSpan(drawable);
+        //将index为6、7的字符用图片替代
+        spannableString.setSpan(imageSpan, 6, 8, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+        textView.setText(spannableString);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +170,7 @@ public class FazhufuActivity extends AppCompatActivity {
 
                 String content = editText.getText().toString();
                 if (!TextUtils.isEmpty(content)){
-                    addDanmaku(content,true);     // 添加一条弹幕
+//                    addDanmakuImage(content,true);     // 添加一条弹幕
                     editText.setText("");
                 }
 
@@ -136,7 +189,6 @@ public class FazhufuActivity extends AppCompatActivity {
             public void prepared() {
                 showDanmaku = true;
                 danmaku.start();    // 开始弹幕
-                generateDanmakus(); // 随机生成弹幕的方法
             }
             @Override
             public void updateTimer(DanmakuTimer timer) {
@@ -158,42 +210,52 @@ public class FazhufuActivity extends AppCompatActivity {
         danmaku.prepare(parser,danmakuContext);
 
     }
+
+
+//    private void addDanmaku(String content, boolean border) {
+//        // 创建弹幕对象，设置从右向左滚动
+//        BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
+//        baseDanmaku.text = content;     // 设置内容
+//        baseDanmaku.padding = 6;        // 设置边距
+//        baseDanmaku.textSize = 25;      // 设置弹幕字体大小
+//        baseDanmaku.textColor = Color.WHITE;
+//        baseDanmaku.time=danmaku.getCurrentTime();// 设置弹幕字体颜色
+//        // 设置当前时间
+//        if (border){
+//            baseDanmaku.borderColor = Color.BLUE;       // 设置边框颜色
+//        }
+//        // 添加弹幕至弹幕视图组件中
+//        danmaku.addDanmaku(baseDanmaku);
+//    }
+
+
     // 添加弹幕
-    private void addDanmaku(String content, boolean border) {
-        // 创建弹幕对象，设置从右向左滚动
-        BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
-        baseDanmaku.text = content;     // 设置内容
-        baseDanmaku.padding = 6;        // 设置边距
-        baseDanmaku.textSize = 25;      // 设置弹幕字体大小
-        baseDanmaku.textColor = Color.WHITE;
-        baseDanmaku.time=danmaku.getCurrentTime();// 设置弹幕字体颜色
-       // 设置当前时间
-        if (border){
-            baseDanmaku.borderColor = Color.BLUE;       // 设置边框颜色
-        }
-        // 添加弹幕至弹幕视图组件中
-        danmaku.addDanmaku(baseDanmaku);
-    }
+//    private void addDanmakuImage(String content, boolean islive) {
+//        // 创建弹幕对象，设置从右向左滚动
+//        BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
+//
+//        baseDanmaku.text = spannableString;     // 设置内容
+//        baseDanmaku.padding = 6;        // 设置边距
+//        baseDanmaku.priority=1;
+//        baseDanmaku.isLive=islive;
+//        baseDanmaku.textSize = 25;      // 设置弹幕字体大小
+//        baseDanmaku.textColor = Color.WHITE;
+//        baseDanmaku.textShadowColor=0;
+//        baseDanmaku.time=danmaku.getCurrentTime()+1200;// 设置弹幕字体颜色
+//       // 设置当前时间
+//        if (islive){
+//            baseDanmaku.borderColor = Color.BLUE;       // 设置边框颜色
+//        }
+//        // 添加弹幕至弹幕视图组件中
+//        danmaku.addDanmaku(baseDanmaku);
+//    }
 
     // 随机生成弹幕
-    private void generateDanmakus() {
-        // 启用线程随机生成弹幕
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (showDanmaku) {
-                    int num = new Random().nextInt(300);
-                    String content = ""+num;
-                    addDanmaku(content,false);
-                    try {
-                        Thread.sleep(num);
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
+
+
     }
 
 
-}
+
+
+
