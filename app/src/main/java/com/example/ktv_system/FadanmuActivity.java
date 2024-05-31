@@ -3,6 +3,7 @@ package com.example.ktv_system;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -23,6 +24,8 @@ import android.widget.VideoView;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import master.flame.danmaku.controller.DrawHandler;
 import master.flame.danmaku.controller.IDanmakuView;
@@ -138,8 +141,19 @@ public class FadanmuActivity extends AppCompatActivity {
                 View view = LayoutInflater.from(FadanmuActivity.this).inflate(R.layout.activity_duihuankuan,null);
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(FadanmuActivity.this);//要改view的背景颜色，需要再values加一个styles。(MainActivity2.this,R.style.dialog)通过一个资源文件来得到一个圆角
-                builder.setView(view);
-                builder.create().show();
+                builder.setView(view)
+                        .setCancelable(true);
+                final AlertDialog dlg = builder.create();
+                dlg.show();
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        Intent intent1 = new Intent();
+                        intent1.setClass(FadanmuActivity.this, FadanmuActivity.class);
+                        dlg.dismiss();
+                    }
+                }, 500);
+
 
                 String content = editText.getText().toString();
                 if (!TextUtils.isEmpty(content)) {

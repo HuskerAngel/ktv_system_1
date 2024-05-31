@@ -8,17 +8,12 @@
     tools:context=".FazhufuActivity">
 
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
-    <VideoView
+
+    <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/shipin"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
@@ -26,7 +21,7 @@
     <master.flame.danmaku.ui.widget.DanmakuView
         android:id="@+id/fazhufu_danmaku"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -139,7 +134,7 @@
     <EditText
         android:id="@+id/fabianzhufu"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="100dp"
         android:gravity="top"
         android:background="@drawable/fanzhufu_et"
         android:textColor="@color/white"
@@ -150,24 +145,60 @@
         app:layout_constraintTop_toBottomOf="@+id/fabiao"
 
         />
+    <ImageView
+        android:id="@+id/fanzhufu_image"
+        android:layout_width="150dp"
+
+        android:layout_height="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintTop_toBottomOf="@id/test_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/fazhufu_fason"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/fanzhufu_btn"
         android:text="发表"
         android:textColor="#fff"
         android:textSize="24dp"
-        android:background="@drawable/fanzhufu_btn"
-        android:layout_width="150dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fabianzhufu"/>
+        app:layout_constraintTop_toBottomOf="@+id/fabianzhufu" />
 
     <TextView
         android:id="@+id/test_text"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+
+        android:layout_marginBottom="184dp"
+        android:gravity="center"
+        android:text="请选择想要上传的图片"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/fabianzhufu"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="(每次只能上传一张图片)"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@id/test_text"
+
+        app:layout_constraintTop_toTopOf="@id/test_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
