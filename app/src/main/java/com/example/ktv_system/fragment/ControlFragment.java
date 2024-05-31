@@ -472,6 +472,7 @@ public class ControlFragment extends Fragment {
             mtvmusicing.setText("暂无播放歌曲");
             seekBar.setVisibility(View.INVISIBLE);
             linearLayout.setVisibility(View.INVISIBLE);
+            btn4.setChecked(false);
             btn4.setOnCheckedChangeListener(null);
             btn3.setOnClickListener(null);
             btn1.setOnClickListener(null);
