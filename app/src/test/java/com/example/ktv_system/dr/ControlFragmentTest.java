@@ -1,31 +1,80 @@
 package com.example.ktv_system.dr;
 
+import static org.junit.Assert.*;
+
 import junit.framework.TestCase;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ControlFragmentTest extends TestCase {
 
+    @Before
     public void setUp() throws Exception {
-        super.setUp();
     }
 
-    public void testNewInstance() {
+    @After
+    public void tearDown() throws Exception {
     }
 
-    public void testOnCreate() {
+    @Test
+    public void newInstance() {
     }
 
-    public void testOnCreateView() {
+    @Test
+    public void onCreate() {
     }
 
-    public void testOnViewCreated() {
+    @Test
+    public void onCreateView() {
     }
 
-    public void testOnResume() {
+    @Test
+    public void onViewCreated() {
     }
 
-    public void testOnDestroy() {
+    @Test
+    public void onYxReduceClick() {
+    }
+
+    @Test
+    public void onYxAddClick() {
+    }
+
+    @Test
+    public void onHtReduceClick() {
+    }
+
+    @Test
+    public void onHtAddClick() {
+    }
+
+    @Test
+    public void initMediaPlayer() {
+    }
+
+    @Test
+    public void onResume() {
+    }
+
+    @Test
+    public void onbtn2Click() {
+    }
+
+    @Test
+    public void onbtn1Click() {
+    }
+
+    @Test
+    public void onbtn3Click() {
+    }
+
+    @Test
+    public void btn4onCheckedChange() {
+    }
+
+    @Test
+    public void onDestroy() {
     }
 }
-

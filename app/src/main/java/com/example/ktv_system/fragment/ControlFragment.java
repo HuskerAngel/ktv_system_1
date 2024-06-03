@@ -145,144 +145,128 @@ public class ControlFragment extends Fragment {
 
         linearLayout = view.findViewById(R.id.time);
         seekBar = view.findViewById(R.id.seekbar);
-        seekBar.setOnSeekBarChangeListener(new MySeekBar());
         App app = (App) getContext().getApplicationContext();
         mediaPlayer = app.getMediaPlayer();
 
         audioManager = (AudioManager) getContext().getSystemService(Service.AUDIO_SERVICE);
         format = new SimpleDateFormat("mm:ss");
-        /*if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!=
-                PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }else {*/
-        initMediaPlayer();//初始化mediaplayer
-//        }
-        /*App app =  (App)getContext().getApplicationContext();
-        if(app.getDiangelist().size()!=0)
-        {
 
-        }else{
-            Toast.makeText(getContext(), "未点歌", Toast.LENGTH_SHORT).show();
-        }*/
-        ht_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao1,null);
-                mprogressBar = mview.findViewById(R.id.progress1);
-                int curProgress = mprogressBar.getProgress();
-                if(htvolume<100 && htvolume>=0){
-                    htvolume+=10;
-                    mprogressBar.setProgress(htvolume);
-                }else if(htvolume>=100){
-                    mprogressBar.setProgress(htvolume);
-                }
+        initMediaPlayer();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
-                builder.setView(mview);
-                alertDialog1 = builder.create();
-                alertDialog1.show();
+        ht_add.setOnClickListener(v -> onHtAddClick());
 
-                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (alertDialog1.isShowing()){
-                            alertDialog1.dismiss();
-                        }
-                    }
-                },500);
-            }
-        });
+        ht_reduce.setOnClickListener(v -> onHtReduceClick());
 
-        ht_reduce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao1,null);
-                mprogressBar = mview.findViewById(R.id.progress1);
-                int curProgress = mprogressBar.getProgress();
-                if(htvolume<=100 && htvolume>0){
-                    htvolume-=10;
-                    mprogressBar.setProgress(htvolume);
-                }else if(htvolume<=0){
-                    mprogressBar.setProgress(htvolume);
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
-                builder.setView(mview);
-                alertDialog1 = builder.create();
-                alertDialog1.show();
+        yx_add.setOnClickListener(v -> onYxAddClick());
 
-                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (alertDialog1.isShowing()){
-                            alertDialog1.dismiss();
-                        }
-                    }
-                },500);
-            }
-        });
+        yx_reduce.setOnClickListener(v -> onYxReduceClick());
 
-        yx_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao2,null);
-                mprogressBar = mview.findViewById(R.id.progress2);
-                int curProgress = mprogressBar.getProgress();
-                if(yxvolume<100 && yxvolume>=0){
-                    yxvolume+=10;
-                    mprogressBar.setProgress(yxvolume);
-                }else if(yxvolume>=100){
-                    mprogressBar.setProgress(yxvolume);
-                }
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
-                builder.setView(mview);
-                alertDialog2 = builder.create();
-                alertDialog2.show();
-
-                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (alertDialog2.isShowing()){
-                            alertDialog2.dismiss();
-                        }
-                    }
-                },500);
-            }
-
-        });
-
-        yx_reduce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao2,null);
-                mprogressBar = mview.findViewById(R.id.progress2);
-                int curProgress = mprogressBar.getProgress();
-                if(yxvolume<=100 && yxvolume>0){
-                    yxvolume-=10;
-                    mprogressBar.setProgress(yxvolume);
-                }else if(yxvolume<=0){
-                    mprogressBar.setProgress(yxvolume);
-                }
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
-                builder.setView(mview);
-                alertDialog2 = builder.create();
-                alertDialog2.show();
-
-                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (alertDialog2.isShowing()){
-                            alertDialog2.dismiss();
-                        }
-                    }
-                },500);
-            }
-        });
     }
 
-    private void initMediaPlayer() {
+    public void onYxReduceClick() {
+        mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao2,null);
+        mprogressBar = mview.findViewById(R.id.progress2);
+        int curProgress = mprogressBar.getProgress();
+        if(yxvolume<=100 && yxvolume>0){
+            yxvolume-=10;
+            mprogressBar.setProgress(yxvolume);
+        }else if(yxvolume<=0){
+            mprogressBar.setProgress(yxvolume);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
+        builder.setView(mview);
+        alertDialog2 = builder.create();
+        alertDialog2.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (alertDialog2.isShowing()){
+                    alertDialog2.dismiss();
+                }
+            }
+        },500);
+    }
+
+    public void onYxAddClick() {
+        mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao2,null);
+        mprogressBar = mview.findViewById(R.id.progress2);
+        int curProgress = mprogressBar.getProgress();
+        if(yxvolume<100 && yxvolume>=0){
+            yxvolume+=10;
+            mprogressBar.setProgress(yxvolume);
+        }else if(yxvolume>=100){
+            mprogressBar.setProgress(yxvolume);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
+        builder.setView(mview);
+        alertDialog2 = builder.create();
+        alertDialog2.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (alertDialog2.isShowing()){
+                    alertDialog2.dismiss();
+                }
+            }
+        },500);
+    }
+
+    public void onHtReduceClick() {
+        mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao1,null);
+        mprogressBar = mview.findViewById(R.id.progress1);
+        int curProgress = mprogressBar.getProgress();
+        if(htvolume<=100 && htvolume>0){
+            htvolume-=10;
+            mprogressBar.setProgress(htvolume);
+        }else if(htvolume<=0){
+            mprogressBar.setProgress(htvolume);
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
+        builder.setView(mview);
+        alertDialog1 = builder.create();
+        alertDialog1.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (alertDialog1.isShowing()){
+                    alertDialog1.dismiss();
+                }
+            }
+        },500);
+    }
+
+    public void onHtAddClick() {
+        mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao1,null);
+        mprogressBar = mview.findViewById(R.id.progress1);
+        int curProgress = mprogressBar.getProgress();
+        if(htvolume<100 && htvolume>=0){
+            htvolume+=10;
+            mprogressBar.setProgress(htvolume);
+        }else if(htvolume>=100){
+            mprogressBar.setProgress(htvolume);
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
+        builder.setView(mview);
+        alertDialog1 = builder.create();
+        alertDialog1.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (alertDialog1.isShowing()){
+                    alertDialog1.dismiss();
+                }
+            }
+        },500);
+    }
+
+    public void initMediaPlayer() {
         try {
             AssetFileDescriptor afd = getResources().openRawResourceFd(R.raw.loml);
             mediaPlayer.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());//指定音频文件的路径
@@ -359,115 +343,11 @@ public class ControlFragment extends Fragment {
             seekBar.setVisibility(View.VISIBLE);
             linearLayout.setVisibility(View.VISIBLE);
 
+            btn4.setOnCheckedChangeListener(this::btn4onCheckedChange);
+            btn3.setOnClickListener(v -> onbtn3Click());
+            btn1.setOnClickListener(v -> onbtn1Click());
+            btn2.setOnClickListener(v -> onbtn2Click());
 
-            btn4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        if (!mediaPlayer.isPlaying()) {
-                            mediaPlayer.start();//开始播放
-                            mediaPlayer.seekTo(currentPosition);
-
-                            //监听播放时回调函数
-                            timer = new Timer();
-                            timer.schedule(new TimerTask() {
-
-                                Runnable updateUI = new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
-                                    }
-                                };
-
-                                @Override
-                                public void run() {
-                                    if (!isSeekBarChanging) {
-                                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                                        getActivity().runOnUiThread(updateUI);
-                                    }
-                                }
-                            }, 0, 50);
-                        }
-                    } else {
-                        if (mediaPlayer.isPlaying()) {
-                            currentPosition = mediaPlayer.getCurrentPosition();
-                            mediaPlayer.pause();//暂停播放
-                        }
-                    }
-                }
-            });
-
-            btn3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    currentPosition = 0;
-
-                    mediaPlayer.seekTo(currentPosition);
-
-                    //监听播放时回调函数
-                    timer = new Timer();
-                    timer.schedule(new TimerTask() {
-
-                        Runnable updateUI = new Runnable() {
-                            @Override
-                            public void run() {
-                                musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
-                            }
-                        };
-
-                        @Override
-                        public void run() {
-                            if (!isSeekBarChanging) {
-                                seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                                getActivity().runOnUiThread(updateUI);
-                            }
-                        }
-                    }, 0, 50);
-                }
-
-            });
-
-
-            btn1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (yuanchangbanchang) {
-                        yuanchangbanchang = false;
-                        Toast.makeText(getContext(), "已切换为伴唱模式", Toast.LENGTH_SHORT).show();
-                    } else {
-                        yuanchangbanchang = true;
-                        Toast.makeText(getContext(), "已切换为原唱模式", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-            btn2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    App app = (App) getContext().getApplicationContext();
-                    List<GequProduct> templist = app.getDiangelist();
-                    if(templist.size()>0) {
-                        templist.remove(0);
-                        app.setDiangelist(templist);
-                        if (templist.size() != 0) {
-                            mtvmusicing.setText(templist.get(0).getMusic_name());
-                            mediaPlayer.seekTo(0);
-                            mediaPlayer.start();
-                            btn4.setChecked(true);
-                        } else {
-                            mtvmusicing.setText("暂无播放歌曲");
-                            seekBar.setVisibility(View.INVISIBLE);
-                            linearLayout.setVisibility(View.INVISIBLE);
-                            btn4.setChecked(false);
-                            currentPosition = 0;
-                            btn1.setOnClickListener(null);
-                            btn2.setOnClickListener(null);
-                            btn3.setOnClickListener(null);
-                            btn4.setOnCheckedChangeListener(null);
-                        }
-                    }
-                }
-            });
         }else{
             mtvmusicing.setText("暂无播放歌曲");
             seekBar.setVisibility(View.INVISIBLE);
@@ -480,6 +360,102 @@ public class ControlFragment extends Fragment {
             Toast.makeText(getContext(), "未点歌", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void onbtn2Click() {
+        App app = (App) getContext().getApplicationContext();
+        List<GequProduct> templist = app.getDiangelist();
+        if(templist.size()>0) {
+            templist.remove(0);
+            app.setDiangelist(templist);
+            if (templist.size() != 0) {
+                mtvmusicing.setText(templist.get(0).getMusic_name());
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+                btn4.setChecked(true);
+            } else {
+                mtvmusicing.setText("暂无播放歌曲");
+                seekBar.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
+                btn4.setChecked(false);
+                currentPosition = 0;
+                btn1.setOnClickListener(null);
+                btn2.setOnClickListener(null);
+                btn3.setOnClickListener(null);
+                btn4.setOnCheckedChangeListener(null);
+            }
+        }
+    }
+
+    public void onbtn1Click() {
+        if (yuanchangbanchang) {
+            yuanchangbanchang = false;
+            Toast.makeText(getContext(), "已切换为伴唱模式", Toast.LENGTH_SHORT).show();
+        } else {
+            yuanchangbanchang = true;
+            Toast.makeText(getContext(), "已切换为原唱模式", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onbtn3Click() {
+        currentPosition = 0;
+
+        mediaPlayer.seekTo(currentPosition);
+
+        //监听播放时回调函数
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            Runnable updateUI = new Runnable() {
+                @Override
+                public void run() {
+                    musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
+                }
+            };
+
+            @Override
+            public void run() {
+                if (!isSeekBarChanging) {
+                    seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                    getActivity().runOnUiThread(updateUI);
+                }
+            }
+        }, 0, 50);
+    }
+
+    public void btn4onCheckedChange(CompoundButton compoundButton, boolean isChecked) {
+        if (isChecked) {
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start();//开始播放
+                mediaPlayer.seekTo(currentPosition);
+
+                //监听播放时回调函数
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+
+                    Runnable updateUI = new Runnable() {
+                        @Override
+                        public void run() {
+                            musicCur.setText(format.format(mediaPlayer.getCurrentPosition()) + "");
+                        }
+                    };
+
+                    @Override
+                    public void run() {
+                        if (!isSeekBarChanging) {
+                            seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                            getActivity().runOnUiThread(updateUI);
+                        }
+                    }
+                }, 0, 50);
+            }
+        } else {
+            if (mediaPlayer.isPlaying()) {
+                currentPosition = mediaPlayer.getCurrentPosition();
+                mediaPlayer.pause();//暂停播放
+            }
+        }
+    }
+
 
     @Override
     public void onDestroy() {
@@ -496,33 +472,5 @@ public class ControlFragment extends Fragment {
         }
     }
 
-    public class MySeekBar implements SeekBar.OnSeekBarChangeListener {
 
-        public void onProgressChanged(SeekBar seekBar, int progress,
-                                      boolean fromUser) {
-            if(progress==mediaPlayer.getDuration()){
-                List<GequProduct> templist = app.getDiangelist();
-                if(templist.size()>0) {
-                    templist.remove(0);
-                    app.setDiangelist(templist);
-                    if (templist.size() != 0) {
-                        mtvmusicing.setText(templist.get(0).getMusic_name());
-                    } else {
-                        mtvmusicing.setText("暂无播放歌曲");
-                    }
-                }
-            }
-        }
-
-        /*滚动时,应当暂停后台定时器*/
-        public void onStartTrackingTouch(SeekBar seekBar) {
-            isSeekBarChanging = true;
-        }
-        /*滑动结束后，重新设置值*/
-        public void onStopTrackingTouch(SeekBar seekBar) {
-            isSeekBarChanging = false;
-            mediaPlayer.seekTo(seekBar.getProgress());
-            currentPosition = seekBar.getProgress();
-        }
-    }
 }
