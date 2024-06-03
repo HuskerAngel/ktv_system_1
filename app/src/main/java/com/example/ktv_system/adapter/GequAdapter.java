@@ -73,24 +73,23 @@ public class GequAdapter extends BaseAdapter {
 
         viewHolder.diange.setOnClickListener(null);
 //        viewHolder.diange.setOnClickListener(mylistener);
-        viewHolder.diange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, list.get(position).getMusic_name(), Toast.LENGTH_SHORT).show();
-                App app = (App) context.getApplicationContext();
-                List<GequProduct> templist = app.getDiangelist();
-                MediaPlayer mediaPlayer = app.getMediaPlayer();
-                if(templist.size()==0){
-                    mediaPlayer.seekTo(0);
-                    mediaPlayer.start();
-                }
-                Log.i("添加前", list.toString());
-                templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
-                Log.i("添加后", list.toString());
-                app.setDiangelist(templist);
-            }
-        });
+        viewHolder.diange.setOnClickListener(v -> OnViewHolderdiangeClick(position));
         return convertView;
+    }
+
+    public void OnViewHolderdiangeClick(int position) {
+        Toast.makeText(context, list.get(position).getMusic_name(), Toast.LENGTH_SHORT).show();
+        App app = (App) context.getApplicationContext();
+        List<GequProduct> templist = app.getDiangelist();
+        MediaPlayer mediaPlayer = app.getMediaPlayer();
+        if(templist.size()==0){
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
+        }
+        Log.i("添加前", list.toString());
+        templist.add(new GequProduct(list.get(position).getMusic_name(),list.get(position).getSinger()));
+        Log.i("添加后", list.toString());
+        app.setDiangelist(templist);
     }
 
     private class Mylistener implements View.OnClickListener{
