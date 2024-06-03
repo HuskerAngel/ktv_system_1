@@ -6,6 +6,8 @@ plugins {
 
 
 android {
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     namespace = "com.example.ktv_system"
     compileSdk = 34
 
