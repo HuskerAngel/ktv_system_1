@@ -60,26 +60,23 @@ public class TestActivity extends AppCompatActivity {
                 new Fragmentadapter(this,fragmentList);
         viewPager2.setAdapter(fragmentadapter);
         viewPager2.setUserInputEnabled(false);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                switch (itemId){
-                    case R.id.main_item:
-                        viewPager2.setCurrentItem(0);
-                        break;
-                    case R.id.control_item:
-                        viewPager2.setCurrentItem(1);
-                        break;
-                    case R.id.music_item:
-                        viewPager2.setCurrentItem(2);
-                        break;
-                }
-                return true;
-            }
-        });
-
+        bottomNavigationView.setOnItemSelectedListener(this::OnBottomNavigationViewItemSelected);
+    }
+    public boolean OnBottomNavigationViewItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId){
+            case R.id.main_item:
+                viewPager2.setCurrentItem(0);
+                break;
+            case R.id.control_item:
+                viewPager2.setCurrentItem(1);
+                break;
+            case R.id.music_item:
+                viewPager2.setCurrentItem(2);
+                break;
+        }
+        return true;
     }
 
     private void cloneData() {

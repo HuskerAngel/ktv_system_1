@@ -92,80 +92,69 @@ public class FadanmuActivity extends AppCompatActivity {
                 mp.setLooping(true);//让视频循环播放
             }
         });
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn2.setChecked(false);
-                btn3.setChecked(false);
-                btn4.setChecked(false);
-                editText.setText("狂击6666~");
+
+        btn1.setOnClickListener(this::onBtn1Click);
+        btn2.setOnClickListener(this::onBtn2Click);
+        btn3.setOnClickListener(this::onBtn3Click);
+        btn4.setOnClickListener(this::onBtn4Click);
+        btn.setOnClickListener(this::onBtnClick);
+    }
+
+    public void onBtnClick(View v) {
+        btn2.setChecked(false);
+        btn3.setChecked(false);
+        btn1.setChecked(false);
+        btn4.setChecked(false);
+        View view = LayoutInflater.from(FadanmuActivity.this).inflate(R.layout.activity_duihuankuan,null);
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(FadanmuActivity.this);//要改view的背景颜色，需要再values加一个styles。(MainActivity2.this,R.style.dialog)通过一个资源文件来得到一个圆角
+        builder.setView(view)
+                .setCancelable(true);
+        final AlertDialog dlg = builder.create();
+        dlg.show();
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+                Intent intent1 = new Intent();
+                intent1.setClass(FadanmuActivity.this, FadanmuActivity.class);
+                dlg.dismiss();
             }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn1.setChecked(false);
-                btn3.setChecked(false);
-                btn4.setChecked(false);
-                editText.setText("听你的歌，真的需要勇气");
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn2.setChecked(false);
-                btn1.setChecked(false);
-                btn4.setChecked(false);
-                editText.setText("有毛病呀，唱这么好听干嘛");
-            }
-        });
-
-        btn4.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                btn2.setChecked(false);
-                btn3.setChecked(false);
-                btn1.setChecked(false);
-                editText.setText("想要的都拥有，得不到的都释怀。生日快乐");
-            }
-        });
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btn2.setChecked(false);
-                btn3.setChecked(false);
-                btn1.setChecked(false);
-                btn4.setChecked(false);
-                View view = LayoutInflater.from(FadanmuActivity.this).inflate(R.layout.activity_duihuankuan,null);
-
-                AlertDialog.Builder builder=new AlertDialog.Builder(FadanmuActivity.this);//要改view的背景颜色，需要再values加一个styles。(MainActivity2.this,R.style.dialog)通过一个资源文件来得到一个圆角
-                builder.setView(view)
-                        .setCancelable(true);
-                final AlertDialog dlg = builder.create();
-                dlg.show();
-                final Timer t = new Timer();
-                t.schedule(new TimerTask() {
-                    public void run() {
-                        Intent intent1 = new Intent();
-                        intent1.setClass(FadanmuActivity.this, FadanmuActivity.class);
-                        dlg.dismiss();
-                    }
-                }, 500);
+        }, 500);
 
 
-                String content = editText.getText().toString();
-                if (!TextUtils.isEmpty(content)) {
-                    addDanmaku(content, true);     // 添加一条弹幕
-                    editText.setText("");
-                }
-            }
-        });
+        String content = editText.getText().toString();
+        if (!TextUtils.isEmpty(content)) {
+            addDanmaku(content, true);     // 添加一条弹幕
+            editText.setText("");
+        }
+    }
 
+    public void onBtn4Click(View view) {
+        btn2.setChecked(false);
+        btn3.setChecked(false);
+        btn1.setChecked(false);
+        editText.setText("想要的都拥有，得不到的都释怀。生日快乐");
+    }
 
+    public void onBtn3Click(View view) {
+        btn2.setChecked(false);
+        btn1.setChecked(false);
+        btn4.setChecked(false);
+        editText.setText("有毛病呀，唱这么好听干嘛");
+    }
 
+    public void onBtn2Click(View view) {
+        btn1.setChecked(false);
+        btn3.setChecked(false);
+        btn4.setChecked(false);
+        editText.setText("听你的歌，真的需要勇气");
+    }
 
+    public void onBtn1Click(View view) {
+        btn2.setChecked(false);
+        btn3.setChecked(false);
+        btn4.setChecked(false);
+        editText.setText("狂击6666~");
     }
 
 
