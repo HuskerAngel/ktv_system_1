@@ -24,7 +24,7 @@ public class GequLiuxingActivity extends AppCompatActivity {
     private ImageView miv;
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gequ_liuxing);
 

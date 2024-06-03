@@ -186,7 +186,7 @@ public class FadanmuActivity extends AppCompatActivity {
 
     }
     // 添加弹幕
-    private void addDanmaku(String content, boolean border) {
+    public void addDanmaku(String content, boolean border) {
         // 创建弹幕对象，设置从右向左滚动
         BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         baseDanmaku.text = content;     // 设置内容

@@ -19,7 +19,7 @@ public class SousuoActivity extends AppCompatActivity {
     private List<GequProduct> list;
     private  GequAdapter gequAdapter;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sousuo);
         mlv = findViewById(R.id.sousuo_lv);
@@ -31,7 +31,7 @@ public class SousuoActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         gequAdapter.notifyDataSetChanged();
         mlv.setAdapter(gequAdapter);

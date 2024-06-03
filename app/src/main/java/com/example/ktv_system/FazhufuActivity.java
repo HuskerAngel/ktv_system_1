@@ -159,7 +159,7 @@ public class FazhufuActivity extends AppCompatActivity {
        btn4.setOnClickListener(v -> onbtn4click());
        btn.setOnClickListener(v -> onbtnclick());
     }
-    private void onbtnclick() {
+    public void onbtnclick() {
         btn2.setChecked(false);
         btn3.setChecked(false);
         btn1.setChecked(false);
@@ -225,7 +225,7 @@ public class FazhufuActivity extends AppCompatActivity {
                 });
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
             // 从相册返回的数据
@@ -236,7 +236,7 @@ public class FazhufuActivity extends AppCompatActivity {
             }
         }
     }
-    private void stasrtFadeOut(){
+    public void stasrtFadeOut(){
         imageView.animate()
                 .alpha(0f)
                 .setDuration(2500)
@@ -247,7 +247,7 @@ public class FazhufuActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void initDanmaku () {
+    public void initDanmaku () {
         danmaku.setCallback(new DrawHandler.Callback() {
             @Override
             public void prepared() {
@@ -271,7 +271,7 @@ public class FazhufuActivity extends AppCompatActivity {
         // 弹幕view准备  --- 传入解析器
         danmaku.prepare(parser, danmakuContext);
     }
-    private void addDanmaku (String content,boolean border){
+    public void addDanmaku (String content,boolean border){
         // 创建弹幕对象，设置从右向左滚动
         BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         baseDanmaku.text = content;     // 设置内容
@@ -286,7 +286,7 @@ public class FazhufuActivity extends AppCompatActivity {
         // 添加弹幕至弹幕视图组件中
         danmaku.addDanmaku(baseDanmaku);
     }
-    private void initializePlayer() {
+    public void initializePlayer() {
         player=new SimpleExoPlayer.Builder(this).build();
         PlayerView.setPlayer(player);
         RawResourceDataSource rawResourceDataSource = new RawResourceDataSource(context);

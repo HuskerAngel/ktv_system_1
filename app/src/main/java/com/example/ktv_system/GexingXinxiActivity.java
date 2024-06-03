@@ -29,7 +29,7 @@ public class GexingXinxiActivity extends AppCompatActivity {
     private List<GequProduct> list;
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gexing_xinxi);
         mlv = findViewById(R.id.gequ_xinxi_listview);

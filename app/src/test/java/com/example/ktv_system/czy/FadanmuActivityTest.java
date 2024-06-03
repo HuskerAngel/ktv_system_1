@@ -1,4 +1,4 @@
-package com.example.ktv_system.gej;
+package com.example.ktv_system.czy;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class FazhufuActivityTest extends TestCase {
+public class FadanmuActivityTest extends TestCase {
 
     @Before
     public void setUp() throws Exception {
@@ -23,30 +23,26 @@ public class FazhufuActivityTest extends TestCase {
     }
 
     @Test
-    public void onbtn4click() {
+    public void onBtnClick() {
     }
 
     @Test
-    public void onbtn3click() {
+    public void onBtn4Click() {
     }
 
     @Test
-    public void onbtn2click() {
+    public void onBtn3Click() {
     }
 
     @Test
-    public void onbtn1click() {
+    public void onBtn2Click() {
     }
 
     @Test
-    public void onuploadclick() {
+    public void onBtn1Click() {
     }
 
     @Test
-    public void onActivityResult() {
-    }
-
-    @Test
-    public void onBackPressed() {
+    public void addDanmaku() {
     }
 }

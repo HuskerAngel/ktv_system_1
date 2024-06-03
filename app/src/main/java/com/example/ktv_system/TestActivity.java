@@ -39,7 +39,7 @@ public class TestActivity extends AppCompatActivity {
 
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         cloneData();
@@ -79,7 +79,7 @@ public class TestActivity extends AppCompatActivity {
         return true;
     }
 
-    private void cloneData() {
+    public void cloneData() {
         if ((new File(DB_PATH + DB_NAME)).exists() == false) {
             Log.e("数据库是否存在", "cloneData: "+"不存在" );
             // 如 SQLite 数据库文件不存在，再检查一下 database 目录是否存在
