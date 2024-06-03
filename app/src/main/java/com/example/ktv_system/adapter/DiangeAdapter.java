@@ -61,41 +61,40 @@ public class DiangeAdapter extends BaseAdapter {
 
         viewHolder.singer.setText(list.get(position).getSinger());
 
-        viewHolder.cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                App app = (App)context.getApplicationContext();
-                List<GequProduct> templist = app.getDiangelist();
-                MediaPlayer mediaPlayer = app.getMediaPlayer();
-                if(position==0){
-                    mediaPlayer.seekTo(0);
-                    mediaPlayer.start();
-                }
-                templist.remove(position);
-                app.setDiangelist(templist);
-                notifyDataSetChanged();
 
-            }
-        });
+        viewHolder.cancel.setOnClickListener(v -> OnViewHoldercancelClick(position));
 
-        viewHolder.up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                App app = (App)context.getApplicationContext();
-                List<GequProduct> templist = app.getDiangelist();
-                MediaPlayer mediaPlayer = app.getMediaPlayer();
-                mediaPlayer.seekTo(0);
-                mediaPlayer.start();
-                GequProduct gequProduct = templist.remove(position);
-                templist.add(0,gequProduct);
-                app.setDiangelist(templist);
-                notifyDataSetChanged();
+        viewHolder.up.setOnClickListener(v -> OnViewHolderupClick(position));
 
-            }
-        });
 
         return convertView;
     }
+
+    public void OnViewHolderupClick(int position) {
+        App app = (App)context.getApplicationContext();
+        List<GequProduct> templist = app.getDiangelist();
+        MediaPlayer mediaPlayer = app.getMediaPlayer();
+        mediaPlayer.seekTo(0);
+        mediaPlayer.start();
+        GequProduct gequProduct = templist.remove(position);
+        templist.add(0,gequProduct);
+        app.setDiangelist(templist);
+        notifyDataSetChanged();
+    }
+
+    public void OnViewHoldercancelClick(int position) {
+        App app = (App)context.getApplicationContext();
+        List<GequProduct> templist = app.getDiangelist();
+        MediaPlayer mediaPlayer = app.getMediaPlayer();
+        if(position==0){
+            mediaPlayer.seekTo(0);
+            mediaPlayer.start();
+        }
+        templist.remove(position);
+        app.setDiangelist(templist);
+        notifyDataSetChanged();
+    }
+
     class ViewHolder{
         TextView music_name;
         TextView singer;
