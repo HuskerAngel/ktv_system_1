@@ -50,6 +50,10 @@ public class MainFragment extends Fragment {
     private GequfenleiAdapter gequfenleiAdapter;
     private RadioGroup mrg;
     private RadioButton mrb1,mrb2;
+    Intent intentfadanmu;
+    Intent intentfazhufu;
+    Intent intentyaokong;
+    Intent intentdiange;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,10 +115,10 @@ public class MainFragment extends Fragment {
         mrb1 = view.findViewById(R.id.radiobutton1);
         mrb2 = view.findViewById(R.id.radiobutton2);
         mrb1.setChecked(true);
-        Intent intentfadanmu = new Intent();
-        Intent intentfazhufu = new Intent();
-        Intent intentyaokong = new Intent();
-        Intent intentdiange = new Intent();
+        intentfadanmu = new Intent();
+        intentfazhufu = new Intent();
+        intentyaokong = new Intent();
+        intentdiange = new Intent();
         intentfadanmu.setAction("redirecttofadanmu");
         intentfadanmu.addCategory(Intent.CATEGORY_DEFAULT);
         intentfazhufu.setAction("redirecttofazhufu");
@@ -135,109 +139,98 @@ public class MainFragment extends Fragment {
         mgvgequ_mingdan.setAdapter(gequfenleiAdapter);
         mlvgexing_mingdan.setAdapter(gexingAdapter);
 
-        mrb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    mgvgequ_mingdan.setVisibility(View.VISIBLE);
-                    mlvgexing_mingdan.setVisibility(View.GONE);
-                }
-            }
-        });
-        mrb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    mgvgequ_mingdan.setVisibility(View.GONE);
-                    mlvgexing_mingdan.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-        mrg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radioButton = mrg.findViewById(checkedId);
-                String string = radioButton.getText().toString();
-                switch (string){
-                    case "歌星列表":
-                        mgvgequ_mingdan.setVisibility(View.GONE);
-                        mlvgexing_mingdan.setVisibility(View.VISIBLE);
-                        break;
-                    case "歌曲分类":
-                        mgvgequ_mingdan.setVisibility(View.VISIBLE);
-                        mlvgexing_mingdan.setVisibility(View.GONE);
-                }
-            }
-        });
-        mgvgequ_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intenttomusiclist = new Intent();
-                Bundle musiclistbundle = new Bundle();
-                musiclistbundle.putString("分类",gequfenleilist.get(position).getTitle());
-                intenttomusiclist.putExtra("extra",musiclistbundle);
-                intenttomusiclist.setAction("歌曲列表");
-                intenttomusiclist.addCategory(Intent.CATEGORY_DEFAULT);
-                startActivity(intenttomusiclist);
-            }
-        });
-
-        mlvgexing_mingdan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intenttogexingxinxi = new Intent();
-                Bundle gexingxinxibundle = new Bundle();
-                gexingxinxibundle.putString("歌手名",gexinglist.get(position).getTitle());
-                gexingxinxibundle.putString("歌手图片",gexinglist.get(position).getImg());
-                intenttogexingxinxi.putExtra("extra",gexingxinxibundle);
-                intenttogexingxinxi.setAction("歌星曲目列表");
-                intenttogexingxinxi.addCategory(Intent.CATEGORY_DEFAULT);
-                startActivity(intenttogexingxinxi);
-            }
-        });
-
-
-        met.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId== EditorInfo.IME_ACTION_SEARCH){
-                    Intent intenttosousuo = new Intent();
-                    Bundle sousuobundle = new Bundle();
-                    sousuobundle.putString("搜索内容",met.getText().toString());
-                    intenttosousuo.putExtra("extra",sousuobundle);
-                    intenttosousuo.setAction("搜索");
-                    intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
-                    startActivity(intenttosousuo);
-                }
-                return false;
-            }
-        });
-        mbtsousuo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intenttosousuo = new Intent();
-                Bundle sousuobundle = new Bundle();
-                sousuobundle.putString("搜索内容",met.getText().toString());
-                intenttosousuo.putExtra("extra",sousuobundle);
-                intenttosousuo.setAction("搜索");
-                intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
-                startActivity(intenttosousuo);
-            }
-        });
-        mbtfadanmu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intentfadanmu);
-            }
-        });
-        mbtfazhufu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(intentfazhufu);
-            }
-        });
-
+        mrb1.setOnCheckedChangeListener(this::onMrb1CheckedChange);
+        mrb2.setOnCheckedChangeListener(this::onMrb2CheckedChange);
+        mrg.setOnCheckedChangeListener(this::onMrgCheckedChange);
+        mgvgequ_mingdan.setOnItemClickListener(this::OnMgvgequ_mingdanItemClick);
+        mlvgexing_mingdan.setOnItemClickListener(this::OnMlvgexing_mingdanItemClick);
+        met.setOnEditorActionListener(this::OnMetEditorAction);
+        mbtsousuo.setOnClickListener(this::OnMbtsousuoClick);
+        mbtfadanmu.setOnClickListener(this::OnMbtfadanmuClick);
+        mbtfazhufu.setOnClickListener(this::OnMbtfazhufuClick);
     }
+
+    public void OnMbtfazhufuClick(View view) {
+        startActivity(intentfazhufu);
+    }
+
+    public void OnMbtfadanmuClick(View view) {
+        startActivity(intentfadanmu);
+    }
+
+
+    public void OnMbtsousuoClick(View v) {
+        Intent intenttosousuo = new Intent();
+        Bundle sousuobundle = new Bundle();
+        sousuobundle.putString("搜索内容",met.getText().toString());
+        intenttosousuo.putExtra("extra",sousuobundle);
+        intenttosousuo.setAction("搜索");
+        intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
+        startActivity(intenttosousuo);
+    }
+
+    public boolean OnMetEditorAction(TextView v, int actionId, KeyEvent event) {
+        if(actionId== EditorInfo.IME_ACTION_SEARCH){
+            Intent intenttosousuo = new Intent();
+            Bundle sousuobundle = new Bundle();
+            sousuobundle.putString("搜索内容",met.getText().toString());
+            intenttosousuo.putExtra("extra",sousuobundle);
+            intenttosousuo.setAction("搜索");
+            intenttosousuo.addCategory(Intent.CATEGORY_DEFAULT);
+            startActivity(intenttosousuo);
+        }
+        return false;
+    }
+
+    public void OnMlvgexing_mingdanItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent intenttogexingxinxi = new Intent();
+        Bundle gexingxinxibundle = new Bundle();
+        gexingxinxibundle.putString("歌手名",gexinglist.get(position).getTitle());
+        gexingxinxibundle.putString("歌手图片",gexinglist.get(position).getImg());
+        intenttogexingxinxi.putExtra("extra",gexingxinxibundle);
+        intenttogexingxinxi.setAction("歌星曲目列表");
+        intenttogexingxinxi.addCategory(Intent.CATEGORY_DEFAULT);
+        startActivity(intenttogexingxinxi);
+    }
+
+    public void OnMgvgequ_mingdanItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        Intent intenttomusiclist = new Intent();
+        Bundle musiclistbundle = new Bundle();
+        musiclistbundle.putString("分类",gequfenleilist.get(position).getTitle());
+        intenttomusiclist.putExtra("extra",musiclistbundle);
+        intenttomusiclist.setAction("歌曲列表");
+        intenttomusiclist.addCategory(Intent.CATEGORY_DEFAULT);
+        startActivity(intenttomusiclist);
+    }
+
+    public void onMrgCheckedChange(RadioGroup radioGroup, int checkedId) {
+        RadioButton radioButton = mrg.findViewById(checkedId);
+        String string = radioButton.getText().toString();
+        switch (string){
+            case "歌星列表":
+                mgvgequ_mingdan.setVisibility(View.GONE);
+                mlvgexing_mingdan.setVisibility(View.VISIBLE);
+                break;
+            case "歌曲分类":
+                mgvgequ_mingdan.setVisibility(View.VISIBLE);
+                mlvgexing_mingdan.setVisibility(View.GONE);
+        }
+    }
+
+    public void onMrb2CheckedChange(CompoundButton compoundButton, boolean isChecked) {
+        if(isChecked){
+            mgvgequ_mingdan.setVisibility(View.GONE);
+            mlvgexing_mingdan.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void onMrb1CheckedChange(CompoundButton compoundButton, boolean isChecked) {
+        if(isChecked){
+            mgvgequ_mingdan.setVisibility(View.VISIBLE);
+            mlvgexing_mingdan.setVisibility(View.GONE);
+        }
+    }
+
     private void initGequfenleiProduct(){
         gequfenleilist = new ArrayList<>();
         gequfenleilist.add(new GequfenleiProduct(R.drawable.folk,"民谣"));
