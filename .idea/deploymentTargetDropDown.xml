@@ -5,6 +5,15 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="getAllGexingProduct()">
+        <State />
+      </entry>
+      <entry key="getCount()">
+        <State />
+      </entry>
+      <entry key="searchGequProduct()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

@@ -2,12 +2,7 @@ package com.example.ktv_system.dr;
 
 import static org.hamcrest.CoreMatchers.any;
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -36,10 +31,7 @@ import org.junit.Test;
 import org.junit.internal.runners.JUnit4ClassRunner;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
+
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
@@ -60,11 +52,10 @@ public class ControlFragmentTest  {
 //    AlertDialog.Builder mockBuilder;
 //    @Mock
 //    AlertDialog mockAlertDialog;
-    @Mock
-    private ControlFragment controlFragment;
+
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+
 
     }
 
@@ -73,7 +64,7 @@ public class ControlFragmentTest  {
     }
     @Test
     public void YxReduce() {
-        doCallRealMethod().when(controlFragment).onYxReduceClick();
+
 // Set up the progress bar
 //        when(mockProgressBar.getProgress()).thenReturn(50); // Example progress value
 //
@@ -94,7 +85,7 @@ public class ControlFragmentTest  {
 //        // Verify dismiss after 500ms
 //        verify(mockAlertDialog).dismiss();
 
-        doCallRealMethod().when(controlFragment).YxReduce();
+        Mockito.doCallRealMethod().when(controlFragment).YxReduce();
         // 执行点击操作
         controlFragment.YxReduce();
         System.out.println(controlFragment.getYxvolume());
@@ -107,7 +98,7 @@ public class ControlFragmentTest  {
     }
     @Test
     public void onYxAddClick() {
-        doCallRealMethod().when(controlFragment).onYxAddClick();
+        Mockito.doCallRealMethod().when(controlFragment).onYxAddClick();
 
         controlFragment.onYxAddClick();
         assertEquals(30,controlFragment.getYxvolume());
