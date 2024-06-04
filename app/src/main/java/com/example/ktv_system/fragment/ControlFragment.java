@@ -85,11 +85,29 @@ public class ControlFragment extends Fragment {
     App app;
     private LinearLayout linearLayout;
 
+    public static int getHtvolume() {
+        return htvolume;
+    }
 
+    public static int getYxvolume() {
+        return yxvolume;
+    }
 
+    public static void setHtvolume(int htvolume) {
+        ControlFragment.htvolume = htvolume;
+    }
 
+    public static void setYxvolume(int yxvolume) {
+        ControlFragment.yxvolume = yxvolume;
+    }
 
+    public View getMview() {
+        return mview;
+    }
 
+    public void setMview(View mview) {
+        this.mview = mview;
+    }
 
     public ControlFragment() {
         // Required empty public constructor
@@ -152,27 +170,25 @@ public class ControlFragment extends Fragment {
         format = new SimpleDateFormat("mm:ss");
 
         initMediaPlayer();
-
         ht_add.setOnClickListener(v -> onHtAddClick());
-
         ht_reduce.setOnClickListener(v -> onHtReduceClick());
-
         yx_add.setOnClickListener(v -> onYxAddClick());
-
         yx_reduce.setOnClickListener(v -> onYxReduceClick());
-
     }
 
+    public void YxReduce(){
+        if(yxvolume<=100 && yxvolume>0){
+            yxvolume-=10;
+        }else if(yxvolume<=0){
+        }
+
+    }
     public void onYxReduceClick() {
         mview = LayoutInflater.from(getContext()).inflate(R.layout.activity_jindutiao2,null);
         mprogressBar = mview.findViewById(R.id.progress2);
         int curProgress = mprogressBar.getProgress();
-        if(yxvolume<=100 && yxvolume>0){
-            yxvolume-=10;
-            mprogressBar.setProgress(yxvolume);
-        }else if(yxvolume<=0){
-            mprogressBar.setProgress(yxvolume);
-        }
+        YxReduce();
+        mprogressBar.setProgress(yxvolume);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),R.style.dialog);
         builder.setView(mview);
@@ -271,7 +287,6 @@ public class ControlFragment extends Fragment {
             AssetFileDescriptor afd = getResources().openRawResourceFd(R.raw.loml);
             mediaPlayer.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());//指定音频文件的路径
             mediaPlayer.prepare();//让mediaplayer进入准备状态
-
 //            mediaPlayer.setLooping(true);
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
