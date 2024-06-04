@@ -63,6 +63,23 @@ public class ControlFragment extends Fragment {
     private String mParam2;
     private Button ht_add,ht_reduce,btn1,btn2,btn3,yx_add,yx_reduce;
     private CheckBox btn4;
+
+    public Button getBtn1() {
+        return btn1;
+    }
+
+    public Button getBtn2() {
+        return btn2;
+    }
+
+    public Button getBtn3() {
+        return btn3;
+    }
+
+    public CheckBox getBtn4() {
+        return btn4;
+    }
+
     private ProgressBar mprogressBar;
     private AlertDialog alertDialog1,alertDialog2;
     private View mview;
@@ -70,8 +87,27 @@ public class ControlFragment extends Fragment {
     private static  int yxvolume = 20;
     private static boolean yuanchangbanchang = true;
     private TextView mtvmusicing;
+
+    public TextView getMtvmusicing() {
+        return mtvmusicing;
+    }
+
     private SeekBar seekBar;
+
+    public SeekBar getSeekBar() {
+        return seekBar;
+    }
+
     private TextView musicLength,musicCur;
+
+    public TextView getMusicLength() {
+        return musicLength;
+    }
+
+    public TextView getMusicCur() {
+        return musicCur;
+    }
+
     private Timer timer;
     private boolean isSeekBarChanging;//互斥变量，防止进度条与定时器冲突。
     private int currentPosition;//当前音乐播放的进度
@@ -82,6 +118,11 @@ public class ControlFragment extends Fragment {
     private boolean checked;
 
     private MediaPlayer mediaPlayer;
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
     App app;
     private LinearLayout linearLayout;
 

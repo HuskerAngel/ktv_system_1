@@ -11,6 +11,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -30,12 +31,13 @@ import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.internal.runners.JUnit4ClassRunner;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
+import org.junit.runners.MethodSorters;
 
 
 //@RunWith(JUnit4.class)
@@ -59,8 +61,6 @@ public class ControlFragmentTest  {
     }
     @Test
     public void YxReduce() {
-//        controlFragment.onYxReduceClick();
-//        assertEquals(10, controlFragment.getYxvolume());
         controlFragment.onFragment(controlFragment1 -> {
            controlFragment1.onYxReduceClick();
             assertEquals(10, controlFragment1.getYxvolume());
@@ -68,41 +68,88 @@ public class ControlFragmentTest  {
     }
     @Test
     public void onYxAddClick() {
-
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onYxAddClick();
+            assertEquals(30,controlFragment1.getYxvolume());
+        });
     }
     @Test
     public void onHtReduceClick() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onHtReduceClick();
+            assertEquals(10,controlFragment1.getHtvolume());
+        });
     }
 
     @Test
     public void onHtAddClick() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onHtAddClick();
+            assertEquals(30,controlFragment1.getHtvolume());
+        });
     }
 
     @Test
     public void initMediaPlayer() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.initMediaPlayer();
+            assertNotNull(controlFragment1.getSeekBar().getMax());
+            assertNotNull(controlFragment1.getMusicCur().toString());
+            assertNotNull(controlFragment1.getMusicLength().toString());
+
+        });
     }
 
     @Test
     public void onResume() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onResume();
+            assertFalse(controlFragment1.getBtn4().isChecked());
+            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
+            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+
+        });
     }
 
     @Test
     public void onbtn2Click() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onbtn2Click();
+            assertFalse(controlFragment1.getBtn4().isChecked());
+            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
+            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+
+        });
     }
 
     @Test
     public void onbtn1Click() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onbtn1Click();
+            assertFalse(controlFragment1.getBtn4().isChecked());
+            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
+            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+
+        });
     }
 
     @Test
     public void onbtn3Click() {
+        controlFragment.onFragment(controlFragment1 -> {
+            controlFragment1.onbtn3Click();
+            assertFalse(controlFragment1.getBtn4().isChecked());
+            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
+            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+
+        });
     }
 
     @Test
     public void btn4onCheckedChange() {
-    }
-
-    @Test
-    public void onDestroy() {
+        controlFragment.onFragment(controlFragment1 -> {
+            CompoundButton compoundButton = controlFragment1.getBtn4();
+            controlFragment1.btn4onCheckedChange(compoundButton,false);
+            assertFalse(controlFragment1.getMediaPlayer().isPlaying());
+        });
     }
 }

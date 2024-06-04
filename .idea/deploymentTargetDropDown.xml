@@ -5,16 +5,19 @@
       <entry key="ControlFragmentTest">
         <State />
       </entry>
-      <entry key="YxReduce() (1)">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="getAllGexingProduct() (1)">
+      <entry key="btn4onCheckedChange()">
         <State />
       </entry>
-      <entry key="onBtn1Click()">
+      <entry key="initMediaPlayer()">
+        <State />
+      </entry>
+      <entry key="onResume()">
+        <State />
+      </entry>
+      <entry key="onbtn2Click()">
         <State />
       </entry>
     </value>
