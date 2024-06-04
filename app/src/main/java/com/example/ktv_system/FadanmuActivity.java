@@ -49,6 +49,11 @@ public class FadanmuActivity extends AppCompatActivity {
     private VideoView videoView;
 
     private EditText editText;
+
+    public EditText getEditText() {
+        return editText;
+    }
+
     private ToggleButton btn1;
     private ToggleButton btn2;
     private ToggleButton btn3;
@@ -93,7 +98,7 @@ public class FadanmuActivity extends AppCompatActivity {
             }
         });
 
-        btn1.setOnClickListener(this::onBtn1Click);
+        btn1.setOnClickListener(v->onBtn1Click());
         btn2.setOnClickListener(this::onBtn2Click);
         btn3.setOnClickListener(this::onBtn3Click);
         btn4.setOnClickListener(this::onBtn4Click);
@@ -150,11 +155,11 @@ public class FadanmuActivity extends AppCompatActivity {
         editText.setText("听你的歌，真的需要勇气");
     }
 
-    public void onBtn1Click(View view) {
+    public void onBtn1Click() {
         btn2.setChecked(false);
         btn3.setChecked(false);
         btn4.setChecked(false);
-        editText.setText("狂击6666~");
+        editText.setText("狂击6666");
     }
 
 

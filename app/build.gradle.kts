@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.ktv_system"
-        minSdk = 24
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -32,13 +32,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     testOptions {
         unitTests {
-
+            isIncludeAndroidResources = true
         }
     }
 
@@ -59,14 +59,15 @@ dependencies {
 
 
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation ("org.robolectric:robolectric:4.7")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation ("androidx.test:core:1.5.0")
-    androidTestImplementation ("androidx.test:rules:1.5.0@aar")
-    androidTestImplementation ("androidx.test:runner:1.5.2")
+//    androidTestImplementation ("org.robolectric:robolectric:4.12.2")
+    debugImplementation("androidx.test.ext:junit:1.1.5")
+    debugImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    debugImplementation ("androidx.test:core:1.5.0")
+    debugImplementation ("androidx.test:runner:1.5.2")
     testImplementation ("org.mockito:mockito-core:5.12.0")
-    testImplementation ("androidx.fragment:fragment-testing:1.5.6")
+    debugImplementation ("androidx.fragment:fragment-testing:1.5.6")
+    testImplementation ("org.robolectric:robolectric:4.12.2")
+    testImplementation("androidx.test.ext:junit:1.1.5")
 
 
 }

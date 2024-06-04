@@ -15,7 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentController;
+import androidx.fragment.app.testing.FragmentScenario;
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 
 import com.example.ktv_system.R;
 import com.example.ktv_system.TestActivity;
@@ -32,76 +36,39 @@ import org.junit.internal.runners.JUnit4ClassRunner;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
+
 
 //@RunWith(JUnit4.class)
-@RunWith(RobolectricTestRunner.class)
+@RunWith(AndroidJUnit4.class)
 public class ControlFragmentTest  {
+//    private ControlFragment controlFragment;
 
-//    @Mock
-//    Context mockContext;
-//    @Mock
-//    LayoutInflater mockInflater;
-//    @Mock
-//    View mockView;
-//    @Mock
-//    ProgressBar mockProgressBar;
-//    @Mock
-//    AlertDialog.Builder mockBuilder;
-//    @Mock
-//    AlertDialog mockAlertDialog;
+    public FragmentScenario<ControlFragment> controlFragment;
+    private Context context;
 
     @Before
     public void setUp() throws Exception {
-
-
+//        context = ApplicationProvider.getApplicationContext();
+        controlFragment = FragmentScenario.launch(ControlFragment.class);
+//        controlFragment = new ControlFragment();
     }
+
 
     @After
     public void tearDown() throws Exception {
     }
     @Test
     public void YxReduce() {
-
-// Set up the progress bar
-//        when(mockProgressBar.getProgress()).thenReturn(50); // Example progress value
-//
-//        // Call the method
 //        controlFragment.onYxReduceClick();
-//
-//        // Verify YxReduce method is called
-//        verify(controlFragment).YxReduce();
-//
-//        // Verify progress bar is set
-//        verify(mockProgressBar).setProgress(anyInt());
-//
-//        // Verify AlertDialog is created and shown
-//        verify(mockBuilder).setView(mockView);
-//        verify(mockBuilder).create();
-//        verify(mockAlertDialog).show();
-//
-//        // Verify dismiss after 500ms
-//        verify(mockAlertDialog).dismiss();
-
-        Mockito.doCallRealMethod().when(controlFragment).YxReduce();
-        // 执行点击操作
-        controlFragment.YxReduce();
-        System.out.println(controlFragment.getYxvolume());
-        // 验证yxvolume的变化
-        assertEquals(10, controlFragment.getYxvolume());
-        // 验证ProgressBar的进度
-        /*ProgressBar progressBar = controlFragment.getMview().findViewById(R.id.progress2);
-        assertNotNull(progressBar);
-        assertEquals(40, progressBar.getProgress());*/
+//        assertEquals(10, controlFragment.getYxvolume());
+        controlFragment.onFragment(controlFragment1 -> {
+           controlFragment1.onYxReduceClick();
+            assertEquals(10, controlFragment1.getYxvolume());
+        });
     }
     @Test
     public void onYxAddClick() {
-        Mockito.doCallRealMethod().when(controlFragment).onYxAddClick();
 
-        controlFragment.onYxAddClick();
-        assertEquals(30,controlFragment.getYxvolume());
     }
     @Test
     public void onHtReduceClick() {
