@@ -27,6 +27,11 @@ public class GexingXinxiActivity extends AppCompatActivity {
     private ListView mlv;
     private ImageView miv;
     private List<GequProduct> list;
+
+    public List<GequProduct> getList() {
+        return list;
+    }
+
     @SuppressLint("MissingInflatedId")
     @Override
     public void onCreate(Bundle savedInstanceState) {

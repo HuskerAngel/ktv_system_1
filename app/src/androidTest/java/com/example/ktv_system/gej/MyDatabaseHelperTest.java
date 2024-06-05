@@ -31,19 +31,9 @@ public class MyDatabaseHelperTest extends TestCase {
         context = ApplicationProvider.getApplicationContext();
         myDatabaseHelper = new MyDatabaseHelper(context);
     }
-
     @After
     public void tearDown() throws Exception {
     }
-
-    @Test
-    public void onCreate() {
-    }
-
-    @Test
-    public void onUpgrade() {
-    }
-
     @Test
     public void getAllGexingProduct() {
         List<GexingProduct> list= myDatabaseHelper.getAllGexingProduct();

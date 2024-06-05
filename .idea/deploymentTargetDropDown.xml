@@ -2,22 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ControlFragmentTest">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="btn4onCheckedChange()">
+      <entry key="getBitmapFromAssets()">
         <State />
       </entry>
-      <entry key="initMediaPlayer()">
+      <entry key="onCreate() (2)">
         <State />
       </entry>
       <entry key="onResume()">
         <State />
       </entry>
-      <entry key="onbtn2Click()">
+      <entry key="onStart()">
+        <State />
+      </entry>
+      <entry key="onViewCreated()">
         <State />
       </entry>
     </value>

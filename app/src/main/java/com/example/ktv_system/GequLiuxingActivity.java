@@ -20,6 +20,11 @@ public class GequLiuxingActivity extends AppCompatActivity {
 
 
     private List<GequProduct> list;
+
+    public List<GequProduct> getList() {
+        return list;
+    }
+
     private ListView mlv;
     private ImageView miv;
     @SuppressLint("MissingInflatedId")

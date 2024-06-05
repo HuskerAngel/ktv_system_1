@@ -17,6 +17,11 @@ public class SousuoActivity extends AppCompatActivity {
     private ListView mlv;
 
     private List<GequProduct> list;
+
+    public List<GequProduct> getList() {
+        return list;
+    }
+
     private  GequAdapter gequAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {

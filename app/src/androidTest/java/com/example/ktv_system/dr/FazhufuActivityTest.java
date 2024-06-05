@@ -26,59 +26,58 @@ public class FazhufuActivityTest extends TestCase {
     @After
     public void tearDown() throws Exception {
     }
-
-    @Test
-    public void onCreate() {
-    }
-
     @Test
     public void onbtnclick() {
         activityScenario.onActivity(fazhufuactivity->{
            fazhufuactivity.onbtnclick();
+           assertFalse(fazhufuactivity.getBtn1().isChecked());
+           assertFalse(fazhufuactivity.getBtn2().isChecked());
+           assertFalse(fazhufuactivity.getBtn3().isChecked());
+           assertFalse(fazhufuactivity.getBtn4().isChecked());
         });
     }
 
     @Test
     public void onbtn4click() {
+        activityScenario.onActivity(fazhufuactivity->{
+            fazhufuactivity.onbtn4click();
+            assertFalse(fazhufuactivity.getBtn1().isChecked());
+            assertFalse(fazhufuactivity.getBtn2().isChecked());
+            assertFalse(fazhufuactivity.getBtn3().isChecked());
+            assertEquals("岁月悠悠，又迎新年，祝我们新年快乐，心想事成，步步高升",fazhufuactivity.getEditText().getText().toString());
+        });
     }
 
     @Test
     public void onbtn3click() {
+        activityScenario.onActivity(fazhufuactivity->{
+            fazhufuactivity.onbtn3click();
+            assertFalse(fazhufuactivity.getBtn1().isChecked());
+            assertFalse(fazhufuactivity.getBtn2().isChecked());
+            assertFalse(fazhufuactivity.getBtn4().isChecked());
+            assertEquals("愿我们的爱情如夏日的阳光，温暖而明亮，照亮彼此的生命之路",fazhufuactivity.getEditText().getText().toString());
+        });
     }
 
     @Test
     public void onbtn2click() {
+        activityScenario.onActivity(fazhufuactivity->{
+            fazhufuactivity.onbtn2click();
+            assertFalse(fazhufuactivity.getBtn1().isChecked());
+            assertFalse(fazhufuactivity.getBtn3().isChecked());
+            assertFalse(fazhufuactivity.getBtn4().isChecked());
+            assertEquals("愿我们的友情地久天长",fazhufuactivity.getEditText().getText().toString());
+        });
     }
 
     @Test
     public void onbtn1click() {
-    }
-
-    @Test
-    public void onuploadclick() {
-    }
-
-    @Test
-    public void onActivityResult() {
-    }
-
-    @Test
-    public void stasrtFadeOut() {
-    }
-
-    @Test
-    public void initDanmaku() {
-    }
-
-    @Test
-    public void addDanmaku() {
-    }
-
-    @Test
-    public void initializePlayer() {
-    }
-
-    @Test
-    public void onBackPressed() {
+        activityScenario.onActivity(fazhufuactivity->{
+            fazhufuactivity.onbtn1click();
+            assertFalse(fazhufuactivity.getBtn2().isChecked());
+            assertFalse(fazhufuactivity.getBtn3().isChecked());
+            assertFalse(fazhufuactivity.getBtn4().isChecked());
+            assertEquals("祝你生日快乐",fazhufuactivity.getEditText().getText().toString());
+        });
     }
 }

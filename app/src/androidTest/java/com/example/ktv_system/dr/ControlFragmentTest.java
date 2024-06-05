@@ -50,9 +50,7 @@ public class ControlFragmentTest  {
 
     @Before
     public void setUp() throws Exception {
-//        context = ApplicationProvider.getApplicationContext();
         controlFragment = FragmentScenario.launch(ControlFragment.class);
-//        controlFragment = new ControlFragment();
     }
 
 
