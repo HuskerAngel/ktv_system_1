@@ -178,81 +178,118 @@ public class FazhufuActivity extends AppCompatActivity {
 
         context = FazhufuActivity.this;
         initializePlayer();
+
+
+
         initDanmaku();
-       upload.setOnClickListener(v -> onuploadclick());
-       btn1.setOnClickListener(v -> onbtn1click());
-       btn2.setOnClickListener(v -> onbtn2click());
-       btn3.setOnClickListener(v -> onbtn3click());
-       btn4.setOnClickListener(v -> onbtn4click());
-       btn.setOnClickListener(v -> onbtnclick());
-    }
-    public void onbtnclick() {
-        btn2.setChecked(false);
-        btn3.setChecked(false);
-        btn1.setChecked(false);
-        btn4.setChecked(false);
-        View view = LayoutInflater.from(FazhufuActivity.this).inflate(R.layout.activity_duihuankuan, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(FazhufuActivity.this);//要改view的背景颜色，需要再values加一个styles。(MainActivity2.this,R.style.dialog)通过一个资源文件来得到一个圆角
-        builder.setView(view)
-                .setCancelable(true);
-        final AlertDialog dlg = builder.create();
-        dlg.show();
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
-                Intent intent1 = new Intent();
-                intent1.setClass(FazhufuActivity.this,FazhufuActivity.class);
-                dlg.dismiss();
+
+
+
+//
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, 2);
+
+
+
+
+                imageView.animate().alpha(1f).setDuration(2500)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationCancel(animation);
+                                stasrtFadeOut();
+
+                            }
+                        });
+
+
+
+
             }
-        }, 500);;
-        String content = editText.getText().toString();
-        if (!TextUtils.isEmpty(content)) {
-            addDanmaku(content, true);    // 添加一条弹幕
-            editText.setText("");
-        }
-    }
-    public void onbtn4click() {
-        btn2.setChecked(false);
-        btn3.setChecked(false);
-        btn1.setChecked(false);
-        editText.setText("岁月悠悠，又迎新年，祝我们新年快乐，心想事成，步步高升");
-    }
+        });
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn2.setChecked(false);
+                btn3.setChecked(false);
+                btn4.setChecked(false);
+                editText.setText("祝你生日快乐");
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn1.setChecked(false);
+                btn3.setChecked(false);
+                btn4.setChecked(false);
+                editText.setText("愿我们的友情地久天长");
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn2.setChecked(false);
+                btn1.setChecked(false);
+                btn4.setChecked(false);
+                editText.setText("愿我们的爱情如夏日的阳光，温暖而明亮，照亮彼此的生命之路");
+            }
+        });
 
-    public void onbtn3click() {
-        btn2.setChecked(false);
-        btn1.setChecked(false);
-        btn4.setChecked(false);
-        editText.setText("愿我们的爱情如夏日的阳光，温暖而明亮，照亮彼此的生命之路");
-    }
-    public void onbtn2click() {
-        btn1.setChecked(false);
-        btn3.setChecked(false);
-        btn4.setChecked(false);
-        editText.setText("愿我们的友情地久天长");
-    }
-    public void onbtn1click() {
-        btn2.setChecked(false);
-        btn3.setChecked(false);
-        btn4.setChecked(false);
-        editText.setText("祝你生日快乐");
-    }
-    public void onuploadclick() {
+        btn4.setOnClickListener(new View.OnClickListener() {
 
-        Intent intent = new Intent(Intent.ACTION_PICK, null);
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-        startActivityForResult(intent, 2);
-        imageView.animate().alpha(1f).setDuration(2500)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationCancel(animation);
-                        stasrtFadeOut();
+            @Override
+            public void onClick(View v) {
+                btn2.setChecked(false);
+                btn3.setChecked(false);
+                btn1.setChecked(false);
+                editText.setText("岁月悠悠，又迎新年，祝我们新年快乐，心想事成，步步高升");
+            }
+        });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn2.setChecked(false);
+                btn3.setChecked(false);
+                btn1.setChecked(false);
+                btn4.setChecked(false);
+
+
+
+                View view = LayoutInflater.from(FazhufuActivity.this).inflate(R.layout.activity_duihuankuan, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(FazhufuActivity.this);//要改view的背景颜色，需要再values加一个styles。(MainActivity2.this,R.style.dialog)通过一个资源文件来得到一个圆角
+                builder.setView(view)
+                        .setCancelable(true);
+                AlertDialog dlg = builder.create();
+                dlg.show();
+                final Timer t = new Timer();
+                t.schedule(new TimerTask() {
+                    public void run() {
+                        Intent intent1 = new Intent();
+                        intent1.setClass(FazhufuActivity.this,FazhufuActivity.class);
+                        dlg.dismiss();
                     }
-                });
+                }, 500);;
+
+
+                String content = editText.getText().toString();
+                if (!TextUtils.isEmpty(content)) {
+                    addDanmaku(content, true);    // 添加一条弹幕
+                    editText.setText("");
+                }
+
+            }
+        });
+
+
     }
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
             // 从相册返回的数据
@@ -260,10 +297,13 @@ public class FazhufuActivity extends AppCompatActivity {
                 // 得到图片的全路径
                 Uri uri = data.getData();
                 imageView.setImageURI(uri);
+
+
+
             }
         }
     }
-    public void stasrtFadeOut(){
+    private void stasrtFadeOut(){
         imageView.animate()
                 .alpha(0f)
                 .setDuration(2500)
@@ -274,31 +314,39 @@ public class FazhufuActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void initDanmaku () {
+
+    private void initDanmaku () {
         danmaku.setCallback(new DrawHandler.Callback() {
             @Override
             public void prepared() {
                 showDanmaku = true;
                 danmaku.start();    // 开始弹幕// 随机生成弹幕的方法
             }
+
             @Override
             public void updateTimer(DanmakuTimer timer) {
             }
+
             @Override
             public void danmakuShown(BaseDanmaku danmaku) {
             }
+
             @Override
             public void drawingFinished() {
             }
         });
+
+
         // 创建 DanmakuContext 上下文对象
         danmakuContext = DanmakuContext.create();
         // 开始缓存
         danmaku.enableDanmakuDrawingCache(true);
         // 弹幕view准备  --- 传入解析器
         danmaku.prepare(parser, danmakuContext);
+
+
     }
-    public void addDanmaku (String content,boolean border){
+    private void addDanmaku (String content,boolean border){
         // 创建弹幕对象，设置从右向左滚动
         BaseDanmaku baseDanmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         baseDanmaku.text = content;     // 设置内容
@@ -313,10 +361,12 @@ public class FazhufuActivity extends AppCompatActivity {
         // 添加弹幕至弹幕视图组件中
         danmaku.addDanmaku(baseDanmaku);
     }
-    public void initializePlayer() {
+
+    private void initializePlayer() {
         player=new SimpleExoPlayer.Builder(this).build();
         PlayerView.setPlayer(player);
         RawResourceDataSource rawResourceDataSource = new RawResourceDataSource(context);
+
         Uri uri = RawResourceDataSource.buildRawResourceUri(R.raw.shipin1);
         DataSpec dataSpec = new DataSpec(uri);
         try {
@@ -324,12 +374,17 @@ public class FazhufuActivity extends AppCompatActivity {
         } catch (RawResourceDataSource.RawResourceDataSourceException e) {
             e.printStackTrace();
         }
+
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(context,
                 Util.getUserAgent(context,"myExoPlayer"));
         MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
                 .createMediaSource(rawResourceDataSource.getUri());
         LoopingMediaSource loopingMediaSource=new LoopingMediaSource(mediaSource);
         player.prepare(mediaSource);
+
+
+
+
         player.play();
         player.addListener(new Player.Listener() {
 
@@ -337,10 +392,21 @@ public class FazhufuActivity extends AppCompatActivity {
                 if(playbackState==Player.STATE_ENDED)
                     player.seekTo(0);
                 player.prepare(mediaSource);
+
+
+
+
                 player.play();
             }
         });
+
+
+
+
     }
+
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

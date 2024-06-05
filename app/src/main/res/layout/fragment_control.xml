@@ -245,7 +245,7 @@
         android:background="@drawable/control_btn5"
         android:textColor="@color/white"
         android:textOff="音效切换"
-        android:textOn="音效切换"
+        android:textOn="切换成功"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -258,7 +258,7 @@
         android:layout_marginBottom="148dp"
         android:background="@drawable/control_btn5"
         android:checked="false"
-        android:textOn="评分开关"
+        android:textOn="评分（开）"
         android:textOff="评分开关"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -275,7 +275,7 @@
         android:checked="false"
         android:textColor="@color/white"
         android:textOff="呼叫服务"
-        android:textOn="呼叫服务"
+        android:textOn="呼叫成功"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/yingxiaoqiehuan" />
@@ -288,13 +288,16 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/control_btn5"
         android:checked="false"
-        android:textOn="灯光模式"
+        android:textOn="灯光（开）"
         android:textOff="灯光模式"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="@id/hujiao"
         app:layout_constraintStart_toStartOf="@id/pingfen"
         />
+
+
+
 
 
 
