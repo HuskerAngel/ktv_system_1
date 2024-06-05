@@ -99,9 +99,9 @@ public class FadanmuActivity extends AppCompatActivity {
         });
 
         btn1.setOnClickListener(v->onBtn1Click());
-        btn2.setOnClickListener(this::onBtn2Click);
-        btn3.setOnClickListener(this::onBtn3Click);
-        btn4.setOnClickListener(this::onBtn4Click);
+        btn2.setOnClickListener(v->onBtn2Click());
+        btn3.setOnClickListener(v->onBtn3Click());
+        btn4.setOnClickListener(v->onBtn4Click());
         btn.setOnClickListener(this::onBtnClick);
     }
 
@@ -134,21 +134,21 @@ public class FadanmuActivity extends AppCompatActivity {
         }
     }
 
-    public void onBtn4Click(View view) {
+    public void onBtn4Click() {
         btn2.setChecked(false);
         btn3.setChecked(false);
         btn1.setChecked(false);
         editText.setText("想要的都拥有，得不到的都释怀。生日快乐");
     }
 
-    public void onBtn3Click(View view) {
+    public void onBtn3Click() {
         btn2.setChecked(false);
         btn1.setChecked(false);
         btn4.setChecked(false);
         editText.setText("有毛病呀，唱这么好听干嘛");
     }
 
-    public void onBtn2Click(View view) {
+    public void onBtn2Click() {
         btn1.setChecked(false);
         btn3.setChecked(false);
         btn4.setChecked(false);

@@ -28,24 +28,29 @@ public class FadanmuActivityTest extends TestCase {
     }
 
     @Test
-    public void onCreate() {
-    }
-
-    @Test
-    public void onBtnClick() {
-    }
-
-    @Test
     public void onBtn4Click() {
+        activityScenario.onActivity(fadanmuactivity->{
+            fadanmuactivity.onBtn4Click();
+            assertEquals("想要的都拥有，得不到的都释怀。生日快乐",fadanmuactivity.getEditText().getText().toString());
+        });
     }
 
     @Test
     public void onBtn3Click() {
+        activityScenario.onActivity(fadanmuactivity->{
+            fadanmuactivity.onBtn3Click();
+            assertEquals("有毛病呀，唱这么好听干嘛",fadanmuactivity.getEditText().getText().toString());
+        });
     }
 
     @Test
     public void onBtn2Click() {
+        activityScenario.onActivity(fadanmuactivity->{
+            fadanmuactivity.onBtn2Click();
+            assertEquals("听你的歌，真的需要勇气",fadanmuactivity.getEditText().getText().toString());
+        });
     }
+
 
     @Test
     public void onBtn1Click() {
@@ -55,7 +60,5 @@ public class FadanmuActivityTest extends TestCase {
         });
     }
 
-    @Test
-    public void addDanmaku() {
-    }
+
 }

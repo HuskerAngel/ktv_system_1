@@ -42,6 +42,15 @@ public class MainFragment extends Fragment {
     private Button mbtfadanmu;
     private Button mbtfazhufu;
     private GridView mgvgequ_mingdan;
+
+    public GridView getMgvgequ_mingdan() {
+        return mgvgequ_mingdan;
+    }
+
+    public ListView getMlvgexing_mingdan() {
+        return mlvgexing_mingdan;
+    }
+
     private ListView mlvgexing_mingdan;
     private List<GequfenleiProduct> gequfenleilist;
     private List<GexingProduct> gexinglist;
@@ -49,6 +58,19 @@ public class MainFragment extends Fragment {
     private EditText met;
     private GequfenleiAdapter gequfenleiAdapter;
     private RadioGroup mrg;
+
+    public RadioGroup getMrg() {
+        return mrg;
+    }
+
+    public RadioButton getMrb1() {
+        return mrb1;
+    }
+
+    public RadioButton getMrb2() {
+        return mrb2;
+    }
+
     private RadioButton mrb1,mrb2;
     Intent intentfadanmu;
     Intent intentfazhufu;

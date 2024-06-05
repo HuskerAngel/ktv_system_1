@@ -63,7 +63,6 @@ public class DiangeAdapter extends BaseAdapter {
 
 
         viewHolder.cancel.setOnClickListener(v -> OnViewHoldercancelClick(position));
-
         viewHolder.up.setOnClickListener(v -> OnViewHolderupClick(position));
 
 

@@ -72,7 +72,6 @@ public class GequAdapter extends BaseAdapter {
         viewHolder.singer.setText(list.get(position).getSinger());
 
         viewHolder.diange.setOnClickListener(null);
-//        viewHolder.diange.setOnClickListener(mylistener);
         viewHolder.diange.setOnClickListener(v -> OnViewHolderdiangeClick(position));
         return convertView;
     }
