@@ -86,6 +86,11 @@ public class ControlFragment extends Fragment {
     private static  int htvolume = 20;
     private static  int yxvolume = 20;
     private static boolean yuanchangbanchang = true;
+
+    public static boolean isYuanchangbanchang() {
+        return yuanchangbanchang;
+    }
+
     private TextView mtvmusicing;
 
     public TextView getMtvmusicing() {
@@ -111,6 +116,11 @@ public class ControlFragment extends Fragment {
     private Timer timer;
     private boolean isSeekBarChanging;//互斥变量，防止进度条与定时器冲突。
     private int currentPosition;//当前音乐播放的进度
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
     SimpleDateFormat format;
 
     private AudioManager audioManager;

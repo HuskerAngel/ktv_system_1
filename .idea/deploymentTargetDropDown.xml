@@ -5,19 +5,19 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="getAllGexingProduct()">
+        <State />
+      </entry>
       <entry key="getBitmapFromAssets()">
         <State />
       </entry>
-      <entry key="onCreate() (2)">
-        <State />
-      </entry>
-      <entry key="onResume()">
-        <State />
-      </entry>
-      <entry key="onStart()">
+      <entry key="onCreate() (1)">
         <State />
       </entry>
       <entry key="onViewCreated()">
+        <State />
+      </entry>
+      <entry key="searchGequProduct()">
         <State />
       </entry>
     </value>

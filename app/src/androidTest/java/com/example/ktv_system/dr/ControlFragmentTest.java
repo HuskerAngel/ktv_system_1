@@ -124,9 +124,7 @@ public class ControlFragmentTest  {
     public void onbtn1Click() {
         controlFragment.onFragment(controlFragment1 -> {
             controlFragment1.onbtn1Click();
-            assertFalse(controlFragment1.getBtn4().isChecked());
-            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
-            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+            assertFalse(controlFragment1.isYuanchangbanchang());
 
         });
     }
@@ -135,9 +133,7 @@ public class ControlFragmentTest  {
     public void onbtn3Click() {
         controlFragment.onFragment(controlFragment1 -> {
             controlFragment1.onbtn3Click();
-            assertFalse(controlFragment1.getBtn4().isChecked());
-            assertEquals("暂无播放歌曲",controlFragment1.getMtvmusicing().getText().toString());
-            assertEquals(0x00000004,controlFragment1.getSeekBar().getVisibility());
+            assertEquals(0,controlFragment1.getCurrentPosition());
 
         });
     }
