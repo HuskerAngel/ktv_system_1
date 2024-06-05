@@ -101,13 +101,40 @@ public class FazhufuActivity extends AppCompatActivity {
     private PlayerView playerView;
 
     private EditText editText;
+
+    public EditText getEditText() {
+        return editText;
+    }
+
     private ToggleButton btn1;
     private ToggleButton btn2;
+
+    public ToggleButton getBtn1() {
+        return btn1;
+    }
+
+    public ToggleButton getBtn2() {
+        return btn2;
+    }
+
+    public ToggleButton getBtn3() {
+        return btn3;
+    }
+
+    public ToggleButton getBtn4() {
+        return btn4;
+    }
+
     private ToggleButton btn3;
     private ToggleButton btn4;
     private IDanmakuView mDanmakuView;
     private boolean showDanmaku;
     private DanmakuView danmaku;
+
+    public DanmakuView getDanmaku() {
+        return danmaku;
+    }
+
     private ImageView imageView;
 
     private DanmakuContext danmakuContext;

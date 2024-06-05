@@ -5,19 +5,19 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="onBtn1Click()">
+      <entry key="getAllGexingProduct()">
         <State />
       </entry>
-      <entry key="onBtn2Click()">
+      <entry key="getBitmapFromAssets()">
         <State />
       </entry>
-      <entry key="onMrb1CheckedChange()">
+      <entry key="onCreate() (1)">
         <State />
       </entry>
-      <entry key="onMrb2CheckedChange()">
+      <entry key="onViewCreated()">
         <State />
       </entry>
-      <entry key="onMrgCheckedChange()">
+      <entry key="searchGequProduct()">
         <State />
       </entry>
     </value>

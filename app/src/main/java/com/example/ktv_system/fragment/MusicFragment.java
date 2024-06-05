@@ -29,6 +29,11 @@ public class MusicFragment extends Fragment {
     private DiangeAdapter diangeAdapter;
     private ListView mlv;
     private List<GequProduct> list;
+
+    public List<GequProduct> getList() {
+        return list;
+    }
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,6 +43,10 @@ public class MusicFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private TextView mtv;
+
+    public TextView getMtv() {
+        return mtv;
+    }
 
     public MusicFragment() {
         // Required empty public constructor
