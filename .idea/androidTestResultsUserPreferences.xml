@@ -96,6 +96,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1557680191">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="vivo V2059A" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-1477992266">
           <value>
             <AndroidTestResultsTableState>
@@ -299,6 +312,7 @@
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_8_API_VanillaIceCream_2" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="vivo V2059A" value="120" />
                 </map>
               </option>
             </AndroidTestResultsTableState>
