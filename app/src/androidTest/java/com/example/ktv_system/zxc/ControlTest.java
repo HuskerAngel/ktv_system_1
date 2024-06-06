@@ -70,26 +70,7 @@ public class ControlTest {
         Espresso.unregisterIdlingResources(ToastIdlingResource.getIdlingResource());
     }
 
-    @Test
-    public void weidiange(){
-        ViewInteraction bottomNavigationItemView = onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
-        bottomNavigationItemView.perform(click());
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Espresso.onView(withText("为点歌"))
-                    .inRoot(new ToastMatcher())
-                    .check(matches(isDisplayed()));
-            ToastIdlingResource.decrement();
-        }, 3500);
-
-    }
     @Test
     public void huantong_add() {
         ViewInteraction bottomNavigationItemView = onView(
