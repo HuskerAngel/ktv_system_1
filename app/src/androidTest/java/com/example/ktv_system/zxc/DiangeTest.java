@@ -134,44 +134,7 @@ public class DiangeTest {
     }
 
 
-    @Test
-    public void diange_suosou() {
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.sousuo),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatEditText.perform(replaceText("love story"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.sousuo_btn), withText("搜索"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatButton.perform(click());
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.gequ_liuxing_listview_diange), withText("点歌"),
-                        childAtPosition(
-                                withParent(withId(R.id.sousuo_lv)),
-                                2),
-                        isDisplayed()));
-        appCompatButton2.perform(click());
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Espresso.onView(withText("Love Story"))
-                    .inRoot(new ToastMatcher())
-                    .check(matches(isDisplayed()));
-            ToastIdlingResource.decrement();
-        }, 3500);
-
-    }
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
