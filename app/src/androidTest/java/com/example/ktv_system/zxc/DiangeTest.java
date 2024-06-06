@@ -70,66 +70,29 @@ public class DiangeTest {
 
     @Test
     public void gequ() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(1);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.gequ_mingdan),
+             childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(1);
         constraintLayout.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(2)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Espresso.onView(withText("化身孤岛的鲸"))
-                    .inRoot(new ToastMatcher())
-                    .check(matches(isDisplayed()));
-
-           ToastIdlingResource.decrement();
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {Espresso.onView(withText("化身孤岛的鲸"))
+                    .inRoot(new ToastMatcher()).check(matches(isDisplayed()));ToastIdlingResource.decrement();
         }, 3500);
 
     }
 
     @Test
     public  void  gexing(){
-        ViewInteraction appCompatRadioButton = onView(
-                allOf(withId(R.id.radiobutton2), withText("歌星列表"),
-                        childAtPosition(
-                                allOf(withId(R.id.radiogroup),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                5)),
-                                1),
-                        isDisplayed()));
+        ViewInteraction appCompatRadioButton = onView(allOf(withId(R.id.radiobutton2), withText("歌星列表"),
+                childAtPosition(allOf(withId(R.id.radiogroup), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 5)), 1), isDisplayed()));
         appCompatRadioButton.perform(click());
-
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gexing_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                1)))
-                .atPosition(0);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gexing_mingdan),
+                childAtPosition(withClassName(is("android.widget.LinearLayout")), 1))).atPosition(0);
         constraintLayout.perform(click());
-
-
-        onData(anything())
-                .inAdapterView(withId(R.id.gequ_xinxi_listview))
-                .atPosition(1)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Espresso.onView(withText("Love Story"))
-                    .inRoot(new ToastMatcher())
-                    .check(matches(isDisplayed()));
-
-            ToastIdlingResource.decrement();
+        onData(anything()).inAdapterView(withId(R.id.gequ_xinxi_listview)).atPosition(1)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {Espresso.onView(withText("Love Story"))
+                    .inRoot(new ToastMatcher()).check(matches(isDisplayed()));ToastIdlingResource.decrement();
         }, 3500);
     }
 

@@ -47,160 +47,61 @@ public class System_music {
 
     @Test
     public void cancle() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(2);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(Matchers.allOf(ViewMatchers.withId(R.id.gequ_mingdan),
+             childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(2);
         constraintLayout.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(1)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(3)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(4)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(6)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(8)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(1)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(3)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(4)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(6)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(8)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.music_item), withContentDescription("点歌"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                2),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.music_item), withContentDescription("点歌"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 2), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.diange_listview))
-                .atPosition(3)
-                .onChildView(withId(R.id.diange_listview_cancle))
-                .perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.diange_listview_geming), withText("Down Bad "),
-                        withParent(withParent(withId(R.id.diange_listview))),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.diange_listview)).atPosition(3)
+                .onChildView(withId(R.id.diange_listview_cancle)).perform(click());
+        ViewInteraction textView = onView(allOf(withId(R.id.diange_listview_geming), withText("Down Bad "),
+                withParent(withParent(withId(R.id.diange_listview))), isDisplayed()));
         textView.check(doesNotExist());
 //；
     }
 
     @Test
     public void up() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(2);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+            childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(2);
         constraintLayout.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(1)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(3)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(4)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(6)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(8)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(1)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(3)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(4)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(6)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(8)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.music_item), withContentDescription("点歌"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                2),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.music_item), withContentDescription("点歌"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 2), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        DataInteraction constraintLayout3 = onData(anything())
-                .inAdapterView(allOf(withId(R.id.diange_listview),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                0)))
-                .atPosition(2);
+        DataInteraction constraintLayout3 = onData(anything()).inAdapterView(allOf(withId(R.id.diange_listview),
+                childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 0))).atPosition(2);
         constraintLayout3.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.diange_listview))
-                .atPosition(3)
-                .onChildView(withId(R.id.diange_listview_up))
-                .perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.diange_listview_geming), withText("Down Bad "),
-                        withParent(withParent(withId(R.id.diange_listview))),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.diange_listview)).atPosition(3)
+                .onChildView(withId(R.id.diange_listview_up)).perform(click());
+        ViewInteraction textView = onView(allOf(withId(R.id.diange_listview_geming), withText("Down Bad "),
+                withParent(withParent(withId(R.id.diange_listview))), isDisplayed()));
         textView.check(doesNotExist());
     }
 

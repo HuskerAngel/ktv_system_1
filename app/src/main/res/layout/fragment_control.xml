@@ -25,7 +25,6 @@
         android:id="@+id/control_text"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
-
         android:gravity="center"
         android:text="暂无播放的歌曲:"
         android:textColor="@color/white"
@@ -81,11 +80,9 @@
         <Button
             android:id="@+id/huantong_add"
             android:background="@drawable/control_add"
-
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:text="."
-
             android:textSize="0sp"
             />
         <TextView
@@ -211,7 +208,6 @@
         <Button
             android:id="@+id/yinxiang_add"
             android:background="@drawable/control_add"
-
             android:text="."
             android:textSize="0sp"
             android:layout_width="70dp"

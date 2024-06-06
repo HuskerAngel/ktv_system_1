@@ -73,463 +73,206 @@ public class ControlTest {
 
     @Test
     public void huantong_add() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"), childAtPosition(
+                childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.huantong_add), withText("."),
-                        childAtPosition(
-                                allOf(withId(R.id.linelayout1),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                4)),
-                                0),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.huantong_add), withText("."),
+                childAtPosition(allOf(withId(R.id.linelayout1), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 4)), 0), isDisplayed()));
         appCompatButton.perform(click());
-
-        ViewInteraction progressBar = onView(
-                allOf(withId(R.id.progress1),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction progressBar = onView(allOf(withId(R.id.progress1),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         progressBar.check(matches(isDisplayed()));
     }
 
     @Test
     public void huatong_reduce() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.huantong_reduce), withText("."),
-                        childAtPosition(
-                                allOf(withId(R.id.linelayout1),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                4)),
-                                2),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.huantong_reduce), withText("."),
+                childAtPosition(allOf(withId(R.id.linelayout1), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 4)), 2), isDisplayed()));
         appCompatButton.perform(click());
-
         ViewInteraction progressBar = onView(
-                allOf(withId(R.id.progress1),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+                allOf(withId(R.id.progress1), withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         progressBar.check(matches(isDisplayed()));
     }
 
     @Test
     public void yingxiang_add() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.yinxiang_add), withText("."),
-                        childAtPosition(
-                                allOf(withId(R.id.linelayout2),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                9)),
-                                0),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.yinxiang_add), withText("."),
+                childAtPosition(allOf(withId(R.id.linelayout2), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 9)), 0), isDisplayed()));
         appCompatButton.perform(click());
-
-        ViewInteraction progressBar = onView(
-                allOf(withId(R.id.progress2),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction progressBar = onView(allOf(withId(R.id.progress2),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         progressBar.check(matches(isDisplayed()));
     }
 
     @Test
     public void yingxiang_reduce() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.yinxiang_reduce), withText("."),
-                        childAtPosition(
-                                allOf(withId(R.id.linelayout2),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                9)),
-                                2),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.yinxiang_reduce), withText("."),
+                childAtPosition(allOf(withId(R.id.linelayout2), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 9)), 2), isDisplayed()));
         appCompatButton.perform(click());
-
-        ViewInteraction progressBar = onView(
-                allOf(withId(R.id.progress2),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction progressBar = onView(allOf(withId(R.id.progress2), withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         progressBar.check(matches(isDisplayed()));
     }
 
     @Test
     public void yinxiao() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatToggleButton = onView(
-                allOf(withId(R.id.yingxiaoqiehuan), withText("音效切换"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                10),
-                        isDisplayed()));
+        ViewInteraction appCompatToggleButton = onView(allOf(withId(R.id.yingxiaoqiehuan), withText("音效切换"),
+                childAtPosition(childAtPosition(withClassName(is("android.widget.FrameLayout")), 0), 10), isDisplayed()));
         appCompatToggleButton.perform(click());
-
-        ViewInteraction toggleButton = onView(
-                allOf(withId(R.id.yingxiaoqiehuan), withText("切换成功"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction toggleButton = onView(allOf(withId(R.id.yingxiaoqiehuan), withText("切换成功"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         toggleButton.check(matches(ViewMatchers.isChecked()));
     }
     @Test
     public void pingfen() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatToggleButton = onView(
-                allOf(withId(R.id.pingfen), withText("评分开关"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                11),
-                        isDisplayed()));
+        ViewInteraction appCompatToggleButton = onView(allOf(withId(R.id.pingfen), withText("评分开关"),
+                childAtPosition(childAtPosition(withClassName(is("android.widget.FrameLayout")), 0), 11), isDisplayed()));
         appCompatToggleButton.perform(click());
-
-        ViewInteraction toggleButton = onView(
-                allOf(withId(R.id.pingfen), withText("评分（开）"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction toggleButton = onView(allOf(withId(R.id.pingfen), withText("评分（开）"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         toggleButton.check(matches(ViewMatchers.isChecked()));
     }
 
     @Test
     public void hujiao() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatToggleButton = onView(
-                allOf(withId(R.id.hujiao), withText("呼叫服务"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                12),
-                        isDisplayed()));
+        ViewInteraction appCompatToggleButton = onView(allOf(withId(R.id.hujiao), withText("呼叫服务"),
+                childAtPosition(childAtPosition(withClassName(is("android.widget.FrameLayout")), 0), 12), isDisplayed()));
         appCompatToggleButton.perform(click());
-
-        ViewInteraction toggleButton = onView(
-                allOf(withId(R.id.hujiao), withText("呼叫成功"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction toggleButton = onView(allOf(withId(R.id.hujiao), withText("呼叫成功"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         toggleButton.check(matches(ViewMatchers.isChecked()));
     }
 
     @Test
     public void dengguang() {
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatToggleButton = onView(
-                allOf(withId(R.id.dengguang), withText("灯光模式"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.FrameLayout")),
-                                        0),
-                                13),
-                        isDisplayed()));
+        ViewInteraction appCompatToggleButton = onView(allOf(withId(R.id.dengguang), withText("灯光模式"),
+                childAtPosition(childAtPosition(withClassName(is("android.widget.FrameLayout")), 0), 13), isDisplayed()));
         appCompatToggleButton.perform(click());
-
-        ViewInteraction toggleButton = onView(
-                allOf(withId(R.id.dengguang), withText("灯光（开）"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction toggleButton = onView(allOf(withId(R.id.dengguang), withText("灯光（开）"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         toggleButton.check(matches(ViewMatchers.isChecked()));
     }
 
     @Test
     public void btn1() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(1);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+                        childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(1);
         constraintLayout.perform(click());
-
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(2)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.btn1),
-                        childAtPosition(
-                                allOf(withId(R.id.ll1),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                5)),
-                                0),
-                        isDisplayed()));
+        ViewInteraction appCompatButton = onView(allOf(withId(R.id.btn1), childAtPosition(allOf(withId(R.id.ll1),
+                childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 5)), 0), isDisplayed()));
         appCompatButton.perform(click());
-
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Espresso.onView(withText("已经切换为伴唱模式"))
-                    .inRoot(new ToastMatcher())
-                    .check(matches(isDisplayed()));
-
+            Espresso.onView(withText("已经切换为伴唱模式")).inRoot(new ToastMatcher()).check(matches(isDisplayed()));
             ToastIdlingResource.decrement();
         }, 3500);
     }
 
     @Test
     public void btn2() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(1);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+                childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(1);
         constraintLayout.perform(click());
-
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(2)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btn2),
-                        childAtPosition(
-                                allOf(withId(R.id.ll1),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                5)),
-                                1),
-                        isDisplayed()));
+        ViewInteraction appCompatButton2 = onView(allOf(withId(R.id.btn2),
+                childAtPosition(allOf(withId(R.id.ll1), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 5)), 1), isDisplayed()));
         appCompatButton2.perform(click());
-
-        ViewInteraction seekBar = onView(
-                allOf(withId(R.id.seekbar),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction seekBar = onView(allOf(withId(R.id.seekbar),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         seekBar.check(doesNotExist());
     }
     @Test
     public void btn3() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(2);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+              childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(2);
         constraintLayout.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(2)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+               childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+               childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.bnt3),
-                        childAtPosition(
-                                allOf(withId(R.id.ll3),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                7)),
-                                0),
-                        isDisplayed()));
+        ViewInteraction appCompatButton2 = onView(allOf(withId(R.id.bnt3), childAtPosition(allOf(withId(R.id.ll3),
+               childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 7)), 0), isDisplayed()));
         appCompatButton2.perform(click());
-
-        ViewInteraction seekBar = onView(
-                allOf(withId(R.id.seekbar),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))),
-                        isDisplayed()));
+        ViewInteraction seekBar = onView(allOf(withId(R.id.seekbar),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
         seekBar.check(matches(withProgressBarValue(0)));
     }
 
     @Test
     public void btn4() {
-        DataInteraction constraintLayout = onData(anything())
-                .inAdapterView(allOf(withId(R.id.gequ_mingdan),
-                        childAtPosition(
-                                withClassName(is("android.widget.LinearLayout")),
-                                0)))
-                .atPosition(2);
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+            childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(2);
         constraintLayout.perform(click());
-
-        onData(anything())
-                .inAdapterView(withId(R.id.liuxing_listview))
-                .atPosition(2)
-                .onChildView(withId(R.id.gequ_liuxing_listview_diange))
-                .perform(click());
-
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withContentDescription("Navigate up"),
-                        childAtPosition(
-                                allOf(withId(androidx.appcompat.R.id.action_bar),
-                                        childAtPosition(
-                                                withId(androidx.appcompat.R.id.action_bar_container),
-                                                0)),
-                                1),
-                        isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
         appCompatImageButton.perform(click());
-
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.control_item), withContentDescription("遥控"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.bootomnav2),
-                                        0),
-                                1),
-                        isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
         bottomNavigationItemView.perform(click());
-
-        ViewInteraction appCompatCheckBox = onView(
-                allOf(withId(R.id.btn4),
-                        childAtPosition(
-                                allOf(withId(R.id.ll3),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                7)),
-                                1),
-                        isDisplayed()));
+        ViewInteraction appCompatCheckBox = onView(allOf(withId(R.id.btn4),
+                childAtPosition(allOf(withId(R.id.ll3), childAtPosition(withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")), 7)), 1), isDisplayed()));
         appCompatCheckBox.perform(click());
-
-        ViewInteraction checkBox = onView(
-                allOf(withId(R.id.btn4),
-                        withParent(allOf(withId(R.id.ll3),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
+        ViewInteraction checkBox = onView(allOf(withId(R.id.btn4), withParent(allOf(withId(R.id.ll3),
+                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))), isDisplayed()));
         checkBox.check(matches(isChecked()));
+    }
+
+    @Test
+    public void xianshi() {
+        DataInteraction constraintLayout = onData(anything()).inAdapterView(allOf(withId(R.id.gequ_mingdan),
+             childAtPosition(withClassName(is("android.widget.LinearLayout")), 0))).atPosition(1);
+        constraintLayout.perform(click());
+        onData(anything()).inAdapterView(withId(R.id.liuxing_listview)).atPosition(2)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
+        ViewInteraction appCompatImageButton = onView(allOf(withContentDescription("Navigate up"),
+                childAtPosition(allOf(withId(androidx.appcompat.R.id.action_bar), childAtPosition(withId(androidx.appcompat.R.id.action_bar_container), 0)), 1), isDisplayed()));
+        appCompatImageButton.perform(click());
+        ViewInteraction bottomNavigationItemView = onView(allOf(withId(R.id.control_item), withContentDescription("遥控"),
+                childAtPosition(childAtPosition(withId(R.id.bootomnav2), 0), 1), isDisplayed()));
+        bottomNavigationItemView.perform(click());
+        ViewInteraction textView2 = onView(allOf(withId(R.id.control_text), withText("化身孤岛的鲸"),
+                withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class))), isDisplayed()));
+        textView2.check(matches(withText("化身孤岛的鲸")));
     }
 
 

@@ -97,7 +97,7 @@ public class System_MainjiemianTest {
         appCompatButton.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.gequ_liuxing_listview_geshou), withText("����"),
+                allOf(withId(R.id.gequ_liuxing_listview_geshou), withText("陈粒"),
                         withParent(withParent(withId(R.id.sousuo_lv))),
                         isDisplayed()));
         textView.check(matches(withText("陈粒")));
@@ -324,11 +324,11 @@ public class System_MainjiemianTest {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-        ViewInteraction view = onView(
-                allOf(withParent(allOf(withId(com.google.android.exoplayer2.ui.R.id.exo_content_frame),
-                                withParent(allOf(withId(R.id.shipin), withContentDescription("Show player controls"))))),
+        ViewInteraction button = onView(
+                allOf(withId(R.id.fazhufu_fason), withText("发表"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        view.check(matches(isDisplayed()));
+        button.check(matches(isDisplayed()));
     }
 
 

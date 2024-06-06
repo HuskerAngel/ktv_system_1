@@ -110,13 +110,8 @@ public class System_diangeTest {
                 .atPosition(0);
         constraintLayout.perform(click());
 
-        ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.gequ_liuxing_listview_diange), withText("点歌"),
-                        childAtPosition(
-                                withParent(withId(R.id.gequ_xinxi_listview)),
-                                2),
-                        isDisplayed()));
-        appCompatButton.perform(click());
+        onData(anything()).inAdapterView(withId(R.id.gequ_xinxi_listview)).atPosition(1)
+                .onChildView(withId(R.id.gequ_liuxing_listview_diange)).perform(click());
 
         ViewInteraction appCompatImageButton = onView(
                 allOf(withContentDescription("Navigate up"),
@@ -140,16 +135,14 @@ public class System_diangeTest {
         bottomNavigationItemView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.diange_listview_geming), withText("Down Bad"),
+                allOf(withId(R.id.diange_listview_geming), withText("Love Story "),
                         withParent(withParent(withId(R.id.diange_listview))),
                         isDisplayed()));
-        textView.check(matches(withText("Down Bad")));
+        textView.check(matches(withText("Love Story ")));
 
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.diange_listview_geming), withText("Down Bad"),
-                        withParent(withParent(withId(R.id.diange_listview))),
-                        isDisplayed()));
-        textView2.check(matches(withText("Down Bad")));
+
+
+
     }
 
 
