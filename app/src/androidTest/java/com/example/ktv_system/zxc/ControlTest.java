@@ -1,4 +1,4 @@
-package com.example.ktv_system;
+package com.example.ktv_system.zxc;
 
 
 import static androidx.test.espresso.Espresso.onData;
@@ -38,8 +38,12 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.example.ktv_system.R;
+import com.example.ktv_system.TestActivity;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.After;
@@ -66,6 +70,26 @@ public class ControlTest {
         Espresso.unregisterIdlingResources(ToastIdlingResource.getIdlingResource());
     }
 
+    @Test
+    public void weidiange(){
+        ViewInteraction bottomNavigationItemView = onView(
+                Matchers.allOf(ViewMatchers.withId(R.id.control_item), withContentDescription("遥控"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bootomnav2),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            Espresso.onView(withText("为点歌"))
+                    .inRoot(new ToastMatcher())
+                    .check(matches(isDisplayed()));
+            ToastIdlingResource.decrement();
+        }, 3500);
+
+    }
     @Test
     public void huantong_add() {
         ViewInteraction bottomNavigationItemView = onView(

@@ -1,4 +1,4 @@
-package com.example.ktv_system.system;
+package com.example.ktv_system.zjl;
 
 
 import static androidx.test.espresso.Espresso.onData;
@@ -40,7 +40,7 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainjiemianTest {
+public class System_MainjiemianTest {
 
     @Rule
     public ActivityScenarioRule<TestActivity> mActivityScenarioRule =

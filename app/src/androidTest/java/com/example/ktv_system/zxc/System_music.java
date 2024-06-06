@@ -1,4 +1,4 @@
-package com.example.ktv_system.system;
+package com.example.ktv_system.zxc;
 
 
 import static androidx.test.espresso.Espresso.onData;
@@ -39,7 +39,7 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class music {
+public class System_music {
 
     @Rule
     public ActivityScenarioRule<TestActivity> mActivityScenarioRule =

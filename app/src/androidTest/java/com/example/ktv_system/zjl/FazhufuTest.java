@@ -1,4 +1,4 @@
-package com.example.ktv_system;
+package com.example.ktv_system.zjl;
 
 
 import static androidx.test.espresso.Espresso.onView;
@@ -23,8 +23,12 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.example.ktv_system.R;
+import com.example.ktv_system.TestActivity;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
@@ -43,7 +47,7 @@ public class FazhufuTest {
     @Test
     public void fazhufu_btn1() {
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.fazhufu), withText("1"),
+                Matchers.allOf(ViewMatchers.withId(R.id.fazhufu), withText("1"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.FrameLayout")),
